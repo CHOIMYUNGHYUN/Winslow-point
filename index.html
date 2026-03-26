@@ -1,5 +1,30 @@
-.tl{top:30px;left:30px}.tr{top:30px;right:30px;transform:scaleX(-1)}
-.bl{bottom:30px;left:30px;transform:scaleY(-1)}.br{bottom:30px;right:30px;transform:scale(-1)}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winslow Point — Coming Soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#06080e;--surface:rgba(255,255,255,0.025);
+    --accent:#4f8fff;--gold:#c9a84c;--gold-dim:#7a6230;
+    --text:#d8e2f0;--sub:#8096b8;--muted:#3a4d68;
+    --border:rgba(79,143,255,0.10);--border-g:rgba(201,168,76,0.15);
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;overflow-x:hidden}
+  .orb{display:none}
+  .page{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px 24px 80px}
+  .topline{position:fixed;top:0;left:0;right:0;height:1px;z-index:10;background:linear-gradient(90deg,transparent 0%,var(--accent) 25%,var(--gold) 75%,transparent 100%);opacity:.5}
+  .corner{position:fixed;width:20px;height:20px}
+  .corner::before,.corner::after{content:'';position:absolute;background:var(--muted);opacity:.5}
+  .corner::before{width:100%;height:1px;top:0;left:0}
+  .corner::after{width:1px;height:100%;top:0;left:0}
+  .tl{top:30px;left:30px}.tr{top:30px;right:30px;transform:scaleX(-1)}
+  .bl{bottom:30px;left:30px;transform:scaleY(-1)}.br{bottom:30px;right:30px;transform:scale(-1)}
 
   /* LANG TOGGLE */
   .lang-btn{position:fixed;top:20px;right:24px;z-index:100;display:flex;align-items:center;background:rgba(255,255,255,0.04);border:1px solid rgba(79,143,255,0.2);border-radius:8px;overflow:hidden}
@@ -7,42 +32,42 @@
   .lang-opt.active{background:rgba(79,143,255,0.18);color:var(--accent)}
   .lang-opt:hover:not(.active){color:var(--sub);background:rgba(255,255,255,0.04)}
 
-/* LOGO */
-.logo{text-align:center;margin-bottom:60px;animation:up 1s ease both}
-.logo-wordmark{font-family:'IBM Plex Sans',sans-serif;font-size:28px;font-weight:600;letter-spacing:8px;color:var(--text);line-height:1;text-transform:uppercase}
-.logo-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:8px}
+  /* LOGO */
+  .logo{text-align:center;margin-bottom:60px;animation:up 1s ease both}
+  .logo-wordmark{font-family:'IBM Plex Sans',sans-serif;font-size:28px;font-weight:600;letter-spacing:8px;color:var(--text);line-height:1;text-transform:uppercase}
+  .logo-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:8px}
 
-/* HEADLINE */
+  /* HEADLINE */
   .headline{text-align:center;margin-bottom:36px;animation:up 1s .15s ease both}
   .hl-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:22px;opacity:.7}
   .hl-main{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(36px,7.5vw,68px);font-weight:600;line-height:1.12;color:var(--text);letter-spacing:-.02em}
   .headline{text-align:center;margin-bottom:36px;animation:up 1s .15s ease both;width:100%;display:flex;flex-direction:column;align-items:center}
   .hl-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:22px;opacity:.7;text-align:center}
   .hl-main{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(36px,7.5vw,68px);font-weight:600;line-height:1.12;color:var(--text);letter-spacing:-.02em;text-align:center}
-.hl-main .grad{background:linear-gradient(90deg,var(--accent) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .hl-main .grad{background:linear-gradient(90deg,var(--accent) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-/* MANIFESTO */
+  /* MANIFESTO */
   .manifesto{max-width:560px;text-align:center;margin-bottom:56px;animation:up 1s .25s ease both}
   .manifesto p{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(16px,2.2vw,19px);font-weight:300;line-height:1.9;color:var(--sub);letter-spacing:.01em}
   .manifesto{max-width:560px;text-align:center;margin-bottom:56px;animation:up 1s .25s ease both;width:100%;display:flex;flex-direction:column;align-items:center}
   .manifesto p{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(16px,2.2vw,19px);font-weight:300;line-height:1.9;color:var(--sub);letter-spacing:.01em;text-align:center;width:100%}
-.manifesto p strong{font-weight:500;color:#b0c8e8}
+  .manifesto p strong{font-weight:500;color:#b0c8e8}
 
-.vdiv{width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--muted),transparent);margin-bottom:52px;animation:fadein 1s .35s ease both}
+  .vdiv{width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--muted),transparent);margin-bottom:52px;animation:fadein 1s .35s ease both}
 @@ -62,66 +68,21 @@
-.section-div::before,.section-div::after{content:'';flex:1;height:1px;background:var(--border)}
-.section-div span{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+  .section-div::before,.section-div::after{content:'';flex:1;height:1px;background:var(--border)}
+  .section-div span{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;white-space:nowrap}
 
   /* ── CREDENTIALS ── */
   /* CREDENTIALS */
-.cred-wrap{width:100%;max-width:760px;animation:up 1s .45s ease both}
+  .cred-wrap{width:100%;max-width:760px;animation:up 1s .45s ease both}
 
-.cred-intro{text-align:center;margin-bottom:36px}
-.cred-intro-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:14px;opacity:.8}
-.cred-intro-text{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(15px,2vw,18px);font-weight:300;color:var(--sub);line-height:1.7;max-width:520px;margin:0 auto}
-.cred-intro-text strong{font-weight:500;color:var(--text)}
+  .cred-intro{text-align:center;margin-bottom:36px}
+  .cred-intro-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:14px;opacity:.8}
+  .cred-intro-text{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(15px,2vw,18px);font-weight:300;color:var(--sub);line-height:1.7;max-width:520px;margin:0 auto}
+  .cred-intro-text strong{font-weight:500;color:var(--text)}
 
-.cred-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  .cred-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
 
   .cred-card{
     border:1px solid var(--border-g);
@@ -53,7 +78,7 @@
     transition:border-color .3s,transform .2s;
   }
   .cred-card{border:1px solid var(--border-g);border-radius:16px;padding:36px 32px;background:linear-gradient(135deg,rgba(201,168,76,0.05) 0%,rgba(201,168,76,0.02) 100%);position:relative;overflow:hidden;transition:border-color .3s,transform .2s}
-.cred-card:hover{border-color:rgba(201,168,76,0.35);transform:translateY(-2px)}
+  .cred-card:hover{border-color:rgba(201,168,76,0.35);transform:translateY(-2px)}
   .cred-card::before{
     content:'';position:absolute;top:0;left:0;right:0;height:2px;
     background:linear-gradient(90deg,transparent,var(--gold),transparent);
@@ -101,26 +126,26 @@
   .cred-number-sub{font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:400;color:var(--gold);letter-spacing:.5px;margin-bottom:16px}
   .cred-desc{font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:300;color:var(--sub);line-height:1.7}
   .cred-badge{display:inline-flex;align-items:center;gap:6px;margin-top:16px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:6px;padding:5px 12px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
-.cred-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.8}
+  .cred-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.8}
 
-/* PLATFORM */
+  /* PLATFORM */
 @@ -141,10 +102,10 @@
-.card-index{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:14px}
-.card-title{font-family:'IBM Plex Sans',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.3;letter-spacing:-.01em}
-.card-desc{font-family:'IBM Plex Sans',sans-serif;font-size:12.5px;font-weight:300;color:var(--sub);line-height:1.75;letter-spacing:.1px}
+  .card-index{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:14px}
+  .card-title{font-family:'IBM Plex Sans',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.3;letter-spacing:-.01em}
+  .card-desc{font-family:'IBM Plex Sans',sans-serif;font-size:12.5px;font-weight:300;color:var(--sub);line-height:1.75;letter-spacing:.1px}
   .analysis-wide{background:var(--surface);border:1px solid var(--border-g);border-radius:12px;padding:24px 28px;display:flex;align-items:center;gap:28px;transition:border-color .3s}
   .analysis-wide{background:var(--surface);border:1px solid var(--border-g);border-radius:12px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;transition:border-color .3s}
-.analysis-wide:hover{border-color:rgba(201,168,76,0.28)}
+  .analysis-wide:hover{border-color:rgba(201,168,76,0.28)}
   .wide-left{flex:1}
   .score-pill{background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:6px 16px;font-family:'IBM Plex Sans',sans-serif;font-size:32px;font-weight:300;color:var(--gold);line-height:1}
   .wide-left{flex:1;min-width:0}
   .score-pill{background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:16px 28px;font-family:'IBM Plex Sans',sans-serif;font-size:48px;font-weight:300;color:var(--gold);line-height:1;text-align:center;flex-shrink:0;min-width:100px}
 
-/* DIFF TABLE */
-.diff-wrap{width:100%;max-width:760px;animation:up 1s .6s ease both}
+  /* DIFF TABLE */
+  .diff-wrap{width:100%;max-width:760px;animation:up 1s .6s ease both}
 @@ -165,8 +126,54 @@
-.pillar-title{font-family:'IBM Plex Sans',sans-serif;font-size:16px;font-weight:600;color:var(--text);margin-bottom:12px;letter-spacing:-.01em}
-.pillar-desc{font-family:'IBM Plex Sans',sans-serif;font-size:12.5px;font-weight:300;color:var(--muted);line-height:1.9}
+  .pillar-title{font-family:'IBM Plex Sans',sans-serif;font-size:16px;font-weight:600;color:var(--text);margin-bottom:12px;letter-spacing:-.01em}
+  .pillar-desc{font-family:'IBM Plex Sans',sans-serif;font-size:12.5px;font-weight:300;color:var(--muted);line-height:1.9}
 
   /* ALPHA */
   .alpha-wrap{width:100%;max-width:760px;animation:up 1s .5s ease both;margin-bottom:0}
@@ -168,16 +193,16 @@
   .dalbar-desc strong{font-weight:500;color:var(--text)}
   .dalbar-source{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:1.5px;color:var(--muted);margin-top:12px}
 
-/* DISCLAIMER */
+  /* DISCLAIMER */
   .disclaimer{width:100%;max-width:640px;margin-bottom:40px;animation:fadein 1s .7s ease both}
   .disclaimer{width:100%;max-width:640px;margin-bottom:40px;margin-top:0;animation:fadein 1s .7s ease both}
-.disclaimer-box{border:1px solid rgba(201,168,76,0.12);border-radius:10px;padding:20px 24px;background:rgba(201,168,76,0.03)}
-.disclaimer-title{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold-dim);text-transform:uppercase;margin-bottom:10px}
-.disclaimer-text{font-family:'IBM Plex Sans',sans-serif;font-size:11.5px;font-weight:300;color:var(--muted);line-height:1.8;letter-spacing:.2px}
+  .disclaimer-box{border:1px solid rgba(201,168,76,0.12);border-radius:10px;padding:20px 24px;background:rgba(201,168,76,0.03)}
+  .disclaimer-title{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold-dim);text-transform:uppercase;margin-bottom:10px}
+  .disclaimer-text{font-family:'IBM Plex Sans',sans-serif;font-size:11.5px;font-weight:300;color:var(--muted);line-height:1.8;letter-spacing:.2px}
 @@ -176,7 +183,12 @@
-.notify-wrap-box{border:1px solid rgba(79,143,255,0.22);border-radius:16px;padding:36px 32px;background:rgba(79,143,255,0.04);position:relative;overflow:hidden}
-.notify-wrap-box::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6}
-.notify-label{font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:600;color:var(--text);margin-bottom:6px;letter-spacing:-.01em}
+  .notify-wrap-box{border:1px solid rgba(79,143,255,0.22);border-radius:16px;padding:36px 32px;background:rgba(79,143,255,0.04);position:relative;overflow:hidden}
+  .notify-wrap-box::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6}
+  .notify-label{font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:600;color:var(--text);margin-bottom:6px;letter-spacing:-.01em}
   .notify-sublabel{font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:300;color:var(--sub);margin-bottom:24px}
   .notify-sublabel{font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:300;color:var(--sub);margin-bottom:20px}
   .notify-countdown{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(79,143,255,0.12);border-radius:10px;padding:12px 16px}
@@ -185,18 +210,18 @@
   .ncd-num{font-family:'IBM Plex Sans',sans-serif;font-size:22px;font-weight:300;color:var(--accent);line-height:1;letter-spacing:-.02em}
   .ncd-unit{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--muted);margin-top:3px}
   .ncd-sep{font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--muted);opacity:.4;line-height:1;margin-bottom:10px}
-.notify-row{display:flex;gap:8px}
-.notify-input{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(79,143,255,0.3);border-radius:10px;padding:15px 18px;color:var(--text);outline:none;font-family:'IBM Plex Mono',monospace;font-size:13px;transition:border-color .25s,background .25s}
-.notify-input::placeholder{color:var(--muted)}
+  .notify-row{display:flex;gap:8px}
+  .notify-input{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(79,143,255,0.3);border-radius:10px;padding:15px 18px;color:var(--text);outline:none;font-family:'IBM Plex Mono',monospace;font-size:13px;transition:border-color .25s,background .25s}
+  .notify-input::placeholder{color:var(--muted)}
 @@ -201,265 +213,384 @@
-.cd-grid{gap:7px}
-.cd-box{padding:20px 6px 16px}
-.diff-table th,.diff-table td{padding:10px 12px;font-size:11px}
+    .cd-grid{gap:7px}
+    .cd-box{padding:20px 6px 16px}
+    .diff-table th,.diff-table td{padding:10px 12px;font-size:11px}
     .alpha-grid{grid-template-columns:1fr}
     .dalbar-box{flex-direction:column;gap:20px;padding:24px 20px}
     .dalbar-divider{width:80px;height:1px}
-}
-@media(max-width:400px){.analysis-grid{grid-template-columns:1fr}}
+  }
+  @media(max-width:400px){.analysis-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -212,30 +237,30 @@
 <div class="page">
 
   <!-- 로고 -->
-<div class="logo">
-<div class="logo-wordmark">Winslow Point</div>
-<div class="logo-sub">Quantitative Signal Platform</div>
-</div>
+  <div class="logo">
+    <div class="logo-wordmark">Winslow Point</div>
+    <div class="logo-sub">Quantitative Signal Platform</div>
+  </div>
 
   <!-- 헤드라인 -->
-<div class="headline">
-<div class="hl-eyebrow">Beta Launch Incoming</div>
+  <div class="headline">
+    <div class="hl-eyebrow">Beta Launch Incoming</div>
     <h1 class="hl-main">뉴스보다 먼저,<br><span class="grad">시장의 이유를 읽다</span></h1>
     <h1 class="hl-main" id="t-headline">뉴스보다 먼저,<br><span class="grad">시장의 이유를 읽다</span></h1>
-</div>
+  </div>
 
   <!-- 선언문 -->
-<div class="manifesto">
+  <div class="manifesto">
     <p>남들이 이미 일어난 <strong>'무엇'</strong>을 기록할 때,<br>우리는 다가올 <strong>'미래'</strong>를 읽고<br>그 <strong>'이유'</strong>를 증명합니다.</p>
     <p id="t-manifesto">남들이 이미 일어난 <strong>'무엇'</strong>을 기록할 때,<br>우리는 다가올 <strong>'미래'</strong>를 읽고<br>그 <strong>'이유'</strong>를 증명합니다.</p>
-</div>
+  </div>
 
-<div class="vdiv"></div>
+  <div class="vdiv"></div>
 
   <!-- 카운트다운 -->
-<div class="cd-wrap">
-<div class="cd-eyebrow">Beta Opens In</div>
-<div class="cd-grid">
+  <div class="cd-wrap">
+    <div class="cd-eyebrow">Beta Opens In</div>
+    <div class="cd-grid">
       <div class="cd-box"><span class="cd-num" id="days">00</span><div class="cd-unit">Days</div></div>
       <div class="cd-box"><span class="cd-num" id="hours">00</span><div class="cd-unit">Hours</div></div>
       <div class="cd-box"><span class="cd-num" id="minutes">00</span><div class="cd-unit">Min</div></div>
@@ -244,39 +269,39 @@
       <div class="cd-box"><span class="cd-num" id="hours">00</span><div class="cd-unit" id="t-hours">Hours</div></div>
       <div class="cd-box"><span class="cd-num" id="minutes">00</span><div class="cd-unit" id="t-min">Min</div></div>
       <div class="cd-box"><span class="cd-num" id="seconds">00</span><div class="cd-unit" id="t-sec">Sec</div></div>
-</div>
-<div class="cd-date">Beta Launch — <strong>2026. 04. 20 &nbsp;AM 08:00 KST</strong></div>
-</div>
+    </div>
+    <div class="cd-date">Beta Launch — <strong>2026. 04. 20 &nbsp;AM 08:00 KST</strong></div>
+  </div>
 
   <!-- 트레이딩 크레덴셜 -->
-<div class="section-div"><span>Trading Credentials</span></div>
+  <div class="section-div"><span>Trading Credentials</span></div>
 
-<div class="cred-wrap">
-<div class="cred-intro">
-<div class="cred-intro-label">Built by a Real Trader</div>
+  <div class="cred-wrap">
+    <div class="cred-intro">
+      <div class="cred-intro-label">Built by a Real Trader</div>
       <p class="cred-intro-text">
         알고리즘이 아니라 <strong>실전 트레이더가 직접 설계했습니다.</strong><br>
         수년간의 실전 성과가 이 플랫폼의 기반입니다.
       </p>
       <p class="cred-intro-text" id="t-cred-intro">알고리즘이 아니라 <strong>실전 트레이더가 직접 설계했습니다.</strong><br>수년간의 실전 성과가 이 플랫폼의 기반입니다.</p>
-</div>
+    </div>
 
-<div class="cred-cards">
-<div class="cred-card">
-<div class="cred-org">CME Group · Global</div>
-<div class="cred-number">TOP 5%</div>
-<div class="cred-number-sub">World Ranking</div>
+    <div class="cred-cards">
+      <div class="cred-card">
+        <div class="cred-org">CME Group · Global</div>
+        <div class="cred-number">TOP 5%</div>
+        <div class="cred-number-sub">World Ranking</div>
         <div class="cred-desc">
           세계 최대 파생상품 거래소 CME Group의<br>
           글로벌 트레이더 랭킹 상위 5% 달성
         </div>
         <div class="cred-desc" id="t-cred1-desc">세계 최대 파생상품 거래소 CME Group의<br>글로벌 트레이더 랭킹 상위 5% 달성</div>
-<div class="cred-badge">Verified · CME Group</div>
-</div>
-<div class="cred-card">
+        <div class="cred-badge">Verified · CME Group</div>
+      </div>
+      <div class="cred-card">
         <div class="cred-org">국내 주요 증권사 · 실전 투자 대회</div>
         <div class="cred-org" id="t-cred2-org">국내 주요 증권사 · 실전 투자 대회</div>
-<div class="cred-number">0.1%</div>
+        <div class="cred-number">0.1%</div>
         <div class="cred-number-sub">해외 주식 부문 상위</div>
         <div class="cred-desc">
           국내 주요 증권사 주관 실전 투자 대회<br>
@@ -286,97 +311,97 @@
         <div class="cred-number-sub" id="t-cred2-sub">해외 주식 부문 상위</div>
         <div class="cred-desc" id="t-cred2-desc">국내 주요 증권사 주관 실전 투자 대회<br>해외 주식 부문 전체 참가자 상위 0.1% 달성</div>
         <div class="cred-badge" id="t-cred2-badge">Verified · 실전 대회</div>
-</div>
-</div>
-</div>
+      </div>
+    </div>
+  </div>
 
   <!-- 다중 분석 플랫폼 -->
   <div class="section-div" style="margin-top:64px"><span>Multi-Analysis Platform</span></div>
   <div class="section-div" style="margin-top:64px"><span id="t-sec-platform">Multi-Analysis Platform</span></div>
 
-<div class="platform">
-<div class="platform-header">
+  <div class="platform">
+    <div class="platform-header">
       <h2 class="platform-title">하나의 플랫폼, <span>여섯 가지의 관점</span></h2>
       <p class="platform-desc">단일 신호의 한계를 넘어 — 6개의 독립적 분석 레이어가 서로를 검증하고 수렴할 때, 신호는 확신이 됩니다.</p>
       <h2 class="platform-title" id="t-platform-title">하나의 플랫폼, <span>여섯 가지의 관점</span></h2>
       <p class="platform-desc" id="t-platform-desc">단일 신호의 한계를 넘어 6개의 독립적 분석 레이어가 서로를 검증하고 수렴할 때, 신호는 확신이 됩니다.</p>
-</div>
-<div class="analysis-grid">
-<div class="analysis-card">
-<div class="card-index">Layer 01</div>
+    </div>
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <div class="card-index">Layer 01</div>
         <div class="card-title">퀀트 모멘텀 신호</div>
         <div class="card-desc">가격·거래량 기반 통계 모델. 503개 전 종목에 대해 매일 신호를 산출하고 백테스트 PBO를 검증합니다.</div>
         <div class="card-title" id="t-l1t">퀀트 모멘텀 신호</div>
         <div class="card-desc" id="t-l1d">가격·거래량 기반 통계 모델. 503개 전 종목에 대해 매일 신호를 산출하고 백테스트 PBO를 검증합니다.</div>
-</div>
-<div class="analysis-card">
-<div class="card-index">Layer 02</div>
+      </div>
+      <div class="analysis-card">
+        <div class="card-index">Layer 02</div>
         <div class="card-title">옵션 플로우 분석</div>
         <div class="card-desc">Put/Call Ratio, 이상 옵션 거래량, 내재 변동성 왜도를 추적하여 기관의 포지셔닝 방향을 선행 포착합니다.</div>
         <div class="card-title" id="t-l2t">옵션 플로우 분석</div>
         <div class="card-desc" id="t-l2d">Put/Call Ratio, 이상 옵션 거래량, 내재 변동성 왜도를 추적하여 기관의 포지셔닝 방향을 선행 포착합니다.</div>
-</div>
-<div class="analysis-card gold">
-<div class="card-index">Layer 03</div>
+      </div>
+      <div class="analysis-card gold">
+        <div class="card-index">Layer 03</div>
         <div class="card-title">섹터 ETF 자금 흐름</div>
         <div class="card-desc">11개 SPDR 섹터 ETF의 자금 유출입과 상대 강도로 시장 주도 섹터와 로테이션 방향을 판별합니다.</div>
         <div class="card-title" id="t-l3t">섹터 ETF 자금 흐름</div>
         <div class="card-desc" id="t-l3d">11개 SPDR 섹터 ETF의 자금 유출입과 상대 강도로 시장 주도 섹터와 로테이션 방향을 판별합니다.</div>
-</div>
-<div class="analysis-card">
-<div class="card-index">Layer 04</div>
+      </div>
+      <div class="analysis-card">
+        <div class="card-index">Layer 04</div>
         <div class="card-title">매크로 선행 지표</div>
         <div class="card-desc">VIX 구조, 수익률 곡선, 달러 인덱스, 원자재 상관관계로 시장 국면(regime)을 분류하고 신호를 가중합니다.</div>
         <div class="card-title" id="t-l4t">매크로 선행 지표</div>
         <div class="card-desc" id="t-l4d">VIX 구조, 수익률 곡선, 달러 인덱스, 원자재 상관관계로 시장 국면(regime)을 분류하고 신호를 가중합니다.</div>
-</div>
-<div class="analysis-card">
-<div class="card-index">Layer 05</div>
+      </div>
+      <div class="analysis-card">
+        <div class="card-index">Layer 05</div>
         <div class="card-title">실적 서프라이즈 모델</div>
         <div class="card-desc">EPS 컨센서스 대비 이탈도, 어닝 모멘텀, 애널리스트 리비전 방향성을 통합하여 이벤트 리스크를 수치화합니다.</div>
         <div class="card-title" id="t-l5t">실적 서프라이즈 모델</div>
         <div class="card-desc" id="t-l5d">EPS 컨센서스 대비 이탈도, 어닝 모멘텀, 애널리스트 리비전 방향성을 통합하여 이벤트 리스크를 수치화합니다.</div>
-</div>
-<div class="analysis-card gold">
-<div class="card-index">Layer 06</div>
+      </div>
+      <div class="analysis-card gold">
+        <div class="card-index">Layer 06</div>
         <div class="card-title">AI 종합 판단</div>
         <div class="card-desc">5개 레이어의 신호를 ML 앙상블로 통합. 충돌 시 신뢰도를 하향하고, 수렴 시 확신도를 상향합니다.</div>
         <div class="card-title" id="t-l6t">AI 종합 판단</div>
         <div class="card-desc" id="t-l6d">5개 레이어의 신호를 ML 앙상블로 통합. 충돌 시 신뢰도를 하향하고, 수렴 시 확신도를 상향합니다.</div>
-</div>
-</div>
-<div class="analysis-wide">
-<div class="wide-left">
-<div class="card-index" style="margin-bottom:10px">Winslow Score</div>
+      </div>
+    </div>
+    <div class="analysis-wide">
+      <div class="wide-left">
+        <div class="card-index" style="margin-bottom:10px">Winslow Score</div>
         <div class="card-title" style="font-size:17px;margin-bottom:10px">6개 레이어의 최종 수렴</div>
         <div class="card-desc" style="font-size:13px">S&P 500 503개 종목 각각에 대해 0–100점의 통합 점수를 산출합니다. 어떤 레이어가 신호를 주도했는지 근거와 함께 투명하게 공개됩니다.</div>
         <div class="card-title" style="font-size:17px;margin-bottom:10px" id="t-score-title">6개 레이어의 최종 수렴</div>
         <div class="card-desc" style="font-size:13px" id="t-score-desc">S&P 500 503개 종목 각각에 대해 0–100점의 통합 점수를 산출합니다. 어떤 레이어가 신호를 주도했는지 근거와 함께 투명하게 공개됩니다.</div>
-</div>
+      </div>
       <div style="flex-shrink:0">
         <div style="font-size:9px;letter-spacing:2px;margin-bottom:8px;color:var(--gold-dim);font-family:'IBM Plex Mono',monospace;text-transform:uppercase">Sample Score</div>
       <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:8px">
         <div style="font-size:9px;letter-spacing:2px;color:var(--gold-dim);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;white-space:nowrap" id="t-sample-label">Sample Score</div>
-<div class="score-pill">84</div>
-</div>
-</div>
-</div>
+        <div class="score-pill">84</div>
+      </div>
+    </div>
+  </div>
 
   <!-- 차별성 -->
   <div class="section-div" style="margin-top:64px"><span>Why Not Others</span></div>
   <div class="section-div" style="margin-top:64px"><span id="t-sec-diff">Why Not Others</span></div>
 
-<div class="diff-wrap">
-<table class="diff-table">
-<thead>
-<tr>
-<th></th>
-<th class="col-wp">Winslow Point</th>
+  <div class="diff-wrap">
+    <table class="diff-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="col-wp">Winslow Point</th>
           <th class="col-other">일반 리서치 / HTS</th>
           <th class="col-other" id="t-diff-other">일반 리서치 / HTS</th>
-</tr>
-</thead>
-<tbody>
+        </tr>
+      </thead>
+      <tbody>
         <tr>
           <td>분석 종목 수</td>
           <td class="col-wp">S&P 500 503종목 전수</td>
@@ -413,17 +438,17 @@
         <tr><td id="t-d4l">근거 공개</td><td class="col-wp" id="t-d4w">레이어별 기여도 투명 공개</td><td class="col-other" id="t-d4o">결론만 제시</td></tr>
         <tr><td id="t-d5l">신뢰도 검증</td><td class="col-wp" id="t-d5w">백테스트 PBO 수치 제공</td><td class="col-other" id="t-d5o">미제공</td></tr>
         <tr><td id="t-d6l">신호 충돌 처리</td><td class="col-wp" id="t-d6w">레이어 충돌 시 자동 하향</td><td class="col-other" id="t-d6o">미처리</td></tr>
-</tbody>
-</table>
-</div>
+      </tbody>
+    </table>
+  </div>
 
   <!-- Why Winslow Point -->
   <div class="section-div" style="margin-top:64px"><span>Why Winslow Point</span></div>
   <div class="section-div" style="margin-top:64px"><span id="t-sec-why">Why Winslow Point</span></div>
 
-<div class="pillars">
-<div class="pillar">
-<div class="pillar-num">01</div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
       <div class="pillar-title">선행합니다</div>
       <div class="pillar-desc">
         옵션 플로우와 자금 흐름은 주가 움직임에 선행합니다.<br>
@@ -431,9 +456,9 @@
       </div>
       <div class="pillar-title" id="t-p1t">선행합니다</div>
       <div class="pillar-desc" id="t-p1d">옵션 플로우와 자금 흐름은 주가 움직임에 선행합니다.<br>뉴스가 나오기 전에 신호가 먼저 발생합니다.</div>
-</div>
-<div class="pillar">
-<div class="pillar-num">02</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
       <div class="pillar-title">증명합니다</div>
       <div class="pillar-desc">
         모든 신호는 수년간의 백테스트로 검증됩니다.<br>
@@ -441,9 +466,9 @@
       </div>
       <div class="pillar-title" id="t-p2t">증명합니다</div>
       <div class="pillar-desc" id="t-p2d">모든 신호는 수년간의 백테스트로 검증됩니다.<br>오버피팅 확률(PBO)까지 함께 공개합니다.</div>
-</div>
-<div class="pillar">
-<div class="pillar-num">03</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
       <div class="pillar-title">근거를 제시합니다</div>
       <div class="pillar-desc">
         점수만 제시하지 않습니다.<br>
@@ -505,26 +530,26 @@
         <div class="dalbar-headline" id="t-dalbar-hl">지난 30년간 일반 투자자의<br>연 평균 수익률은 4~5%입니다.</div>
         <div class="dalbar-desc" id="t-dalbar-desc">감정적 판단, 잘못된 타이밍, 정보의 부재.<br>Winslow Point는 <strong>데이터 기반 판단</strong>으로<br>그 격차를 좁힙니다.</div>
         <div class="dalbar-source">Source: Dalbar QAIB Study · JP Morgan Asset Management Guide to the Markets</div>
-</div>
-</div>
-</div>
+      </div>
+    </div>
+  </div>
 
   <!-- 법적 고지 -->
   <div style="height:64px"></div>
-<div class="disclaimer">
-<div class="disclaimer-box">
+  <div class="disclaimer">
+    <div class="disclaimer-box">
       <div class="disclaimer-title">투자 유의사항</div>
       <div class="disclaimer-text">
         본 플랫폼이 제공하는 모든 정보와 데이터는 참고 목적에 한하며, 특정 종목의 매수·매도를 권유하거나 투자를 대리·일임하는 서비스가 아닙니다. 제공되는 신호 및 점수는 통계적 분석 결과이며, 미래 수익을 보장하지 않습니다. 모든 투자 판단과 그에 따른 손익은 전적으로 이용자 본인에게 귀속됩니다. 투자에는 원금 손실의 위험이 수반될 수 있으므로 신중하게 판단하시기 바랍니다.
       </div>
       <div class="disclaimer-title" id="t-disc-title">투자 유의사항</div>
       <div class="disclaimer-text" id="t-disc-text">본 플랫폼이 제공하는 모든 정보와 데이터는 참고 목적에 한하며, 특정 종목의 매수·매도를 권유하거나 투자를 대리·일임하는 서비스가 아닙니다. 제공되는 신호 및 점수는 통계적 분석 결과이며, 미래 수익을 보장하지 않습니다. 모든 투자 판단과 그에 따른 손익은 전적으로 이용자 본인에게 귀속됩니다. 투자에는 원금 손실의 위험이 수반될 수 있으므로 신중하게 판단하시기 바랍니다.</div>
-</div>
-</div>
+    </div>
+  </div>
 
   <!-- 알림 신청 -->
-<div class="notify">
-<div class="notify-wrap-box">
+  <div class="notify">
+    <div class="notify-wrap-box">
       <div class="notify-label">베타 출시 알림 신청</div>
       <div class="notify-sublabel">April 20 오픈 시 가장 먼저 알려드립니다</div>
       <div class="notify-label" id="t-notify-label">베타 출시 알림 신청</div>
@@ -538,16 +563,16 @@
         <div class="ncd-sep">:</div>
         <div class="ncd-item"><span class="ncd-num" id="nSeconds">00</span><span class="ncd-unit" id="t-nsec">초</span></div>
       </div>
-<div class="notify-row">
-<input class="notify-input" type="email" id="emailInput" placeholder="email@address.com">
+      <div class="notify-row">
+        <input class="notify-input" type="email" id="emailInput" placeholder="email@address.com">
         <button class="notify-btn" onclick="handleNotify()">알림 신청</button>
         <button class="notify-btn" id="t-notify-btn" onclick="handleNotify()">알림 신청</button>
-</div>
-<div class="notify-ok" id="notifyOk">신청 완료. 출시 시 알려드리겠습니다.</div>
-</div>
-</div>
+      </div>
+      <div class="notify-ok" id="notifyOk">신청 완료. 출시 시 알려드리겠습니다.</div>
+    </div>
+  </div>
 
-<div class="footer">&copy; 2026 &nbsp;Winslow Partners</div>
+  <div class="footer">&copy; 2026 &nbsp;Winslow Partners</div>
 
 </div>
 
@@ -688,7 +713,7 @@ const T={
     'notify-btn':'Notify Me',
     'ndays':'Days','nhours':'Hours','nmin':'Min','nsec':'Sec',
     'days':'Days','hours':'Hours','min':'Min','sec':'Sec',
-}
+  }
 };
 
 function setLang(lang){
