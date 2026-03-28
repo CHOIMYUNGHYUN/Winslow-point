@@ -4,21 +4,115 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Winslow Point — Coming Soon</title>
+<!-- Inline theme init to prevent FOUC -->
+<script>
+(function(){
+  var saved = localStorage.getItem('wp-theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --bg:#06080e;--surface:rgba(255,255,255,0.025);
-    --accent:#4f8fff;--gold:#c9a84c;--gold-dim:#7a6230;
-    --text:#d8e2f0;--sub:#8096b8;--muted:#3a4d68;
-    --border:rgba(79,143,255,0.10);--border-g:rgba(201,168,76,0.15);
+
+  /* ── DARK (default) ── */
+  :root {
+    --bg:#06080e;
+    --surface:rgba(255,255,255,0.025);
+    --surface-hover:rgba(255,255,255,0.04);
+    --accent:#4f8fff;
+    --gold:#c9a84c;
+    --gold-dim:#7a6230;
+    --text:#d8e2f0;
+    --sub:#8096b8;
+    --muted:#3a4d68;
+    --border:rgba(79,143,255,0.10);
+    --border-g:rgba(201,168,76,0.15);
+    --cred-num-start:#ffffff;
+    --dalbar-num-start:#ffffff;
+    --row-border:rgba(255,255,255,0.04);
+    --scheme:dark;
+    --topline-opacity:.5;
+    --diff-feat-bg:rgba(79,143,255,0.06);
+    --diff-feat-text:var(--text);
+    --diff-other-bg:rgba(255,255,255,0.015);
   }
+
+  /* ── LIGHT ── */
+  [data-theme="light"],
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg:#f0f3f9;
+      --surface:rgba(0,0,0,0.035);
+      --surface-hover:rgba(0,0,0,0.055);
+      --accent:#1a4ed8;
+      --gold:#7a5a10;
+      --gold-dim:#9a7a30;
+      --text:#0d1a35;
+      --sub:#3a507a;
+      --muted:#8090aa;
+      --border:rgba(26,78,216,0.13);
+      --border-g:rgba(122,90,16,0.18);
+      --cred-num-start:#1a2540;
+      --dalbar-num-start:#1a2540;
+      --row-border:rgba(0,0,0,0.05);
+      --scheme:light;
+      --topline-opacity:.7;
+      --diff-feat-bg:rgba(26,78,216,0.07);
+      --diff-feat-text:var(--text);
+      --diff-other-bg:rgba(0,0,0,0.02);
+    }
+  }
+  [data-theme="light"] {
+    --bg:#f0f3f9;
+    --surface:rgba(0,0,0,0.035);
+    --surface-hover:rgba(0,0,0,0.055);
+    --accent:#1a4ed8;
+    --gold:#7a5a10;
+    --gold-dim:#9a7a30;
+    --text:#0d1a35;
+    --sub:#3a507a;
+    --muted:#8090aa;
+    --border:rgba(26,78,216,0.13);
+    --border-g:rgba(122,90,16,0.18);
+    --cred-num-start:#1a2540;
+    --dalbar-num-start:#1a2540;
+    --row-border:rgba(0,0,0,0.05);
+    --scheme:light;
+    --topline-opacity:.7;
+    --diff-feat-bg:rgba(26,78,216,0.07);
+    --diff-feat-text:var(--text);
+    --diff-other-bg:rgba(0,0,0,0.02);
+  }
+  [data-theme="dark"] {
+    --bg:#06080e;
+    --surface:rgba(255,255,255,0.025);
+    --surface-hover:rgba(255,255,255,0.04);
+    --accent:#4f8fff;
+    --gold:#c9a84c;
+    --gold-dim:#7a6230;
+    --text:#d8e2f0;
+    --sub:#8096b8;
+    --muted:#3a4d68;
+    --border:rgba(79,143,255,0.10);
+    --border-g:rgba(201,168,76,0.15);
+    --cred-num-start:#ffffff;
+    --dalbar-num-start:#ffffff;
+    --row-border:rgba(255,255,255,0.04);
+    --scheme:dark;
+    --topline-opacity:.5;
+    --diff-feat-bg:rgba(79,143,255,0.06);
+    --diff-feat-text:var(--text);
+    --diff-other-bg:rgba(255,255,255,0.015);
+  }
+
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;overflow-x:hidden}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;overflow-x:hidden;transition:background .3s,color .3s}
   .orb{display:none}
-  .page{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px 24px 80px}
-  .topline{position:fixed;top:0;left:0;right:0;height:1px;z-index:10;background:linear-gradient(90deg,transparent 0%,var(--accent) 25%,var(--gold) 75%,transparent 100%);opacity:.5}
+  .page{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:80px 24px 80px}
+
+  .topline{position:fixed;top:0;left:0;right:0;height:1px;z-index:10;background:linear-gradient(90deg,transparent 0%,var(--accent) 25%,var(--gold) 75%,transparent 100%);opacity:var(--topline-opacity)}
   .corner{position:fixed;width:20px;height:20px}
   .corner::before,.corner::after{content:'';position:absolute;background:var(--muted);opacity:.5}
   .corner::before{width:100%;height:1px;top:0;left:0}
@@ -26,31 +120,52 @@
   .tl{top:30px;left:30px}.tr{top:30px;right:30px;transform:scaleX(-1)}
   .bl{bottom:30px;left:30px;transform:scaleY(-1)}.br{bottom:30px;right:30px;transform:scale(-1)}
 
-  /* LANG TOGGLE */
-  .lang-btn{position:fixed;top:20px;right:24px;z-index:100;display:flex;align-items:center;background:rgba(255,255,255,0.04);border:1px solid rgba(79,143,255,0.2);border-radius:8px;overflow:hidden}
+  /* ── TOP BAR (not fixed — stays at top of page) ── */
+  .top-bar{
+    position:absolute;top:20px;right:24px;
+    display:flex;align-items:center;gap:8px;
+    z-index:10;
+  }
+  .lang-btn{display:flex;align-items:center;background:var(--surface);border:1px solid rgba(79,143,255,0.2);border-radius:8px;overflow:hidden}
   .lang-opt{padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);cursor:pointer;transition:all .2s;border:none;background:transparent}
   .lang-opt.active{background:rgba(79,143,255,0.18);color:var(--accent)}
-  .lang-opt:hover:not(.active){color:var(--sub);background:rgba(255,255,255,0.04)}
+  .lang-opt:hover:not(.active){color:var(--sub);background:var(--surface-hover)}
 
-  /* LOGO */
-  .logo{text-align:center;margin-bottom:60px;animation:up 1s ease both}
+  /* Theme toggle */
+  .theme-btn{
+    display:flex;align-items:center;justify-content:center;
+    width:34px;height:34px;
+    background:var(--surface);
+    border:1px solid rgba(79,143,255,0.2);
+    border-radius:8px;
+    color:var(--muted);
+    cursor:pointer;
+    font-size:14px;
+    transition:all .2s;
+    flex-shrink:0;
+  }
+  .theme-btn:hover{color:var(--sub);background:var(--surface-hover);border-color:rgba(79,143,255,0.3)}
+
+  /* ── LOGO ── */
+  .logo{text-align:center;margin-bottom:60px;margin-top:40px;animation:up 1s ease both}
   .logo-wordmark{font-family:'IBM Plex Sans',sans-serif;font-size:28px;font-weight:600;letter-spacing:8px;color:var(--text);line-height:1;text-transform:uppercase}
   .logo-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:8px}
 
-  /* HEADLINE */
+  /* ── HEADLINE ── */
   .headline{text-align:center;margin-bottom:36px;animation:up 1s .15s ease both;width:100%;display:flex;flex-direction:column;align-items:center}
   .hl-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:22px;opacity:.7;text-align:center}
   .hl-main{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(36px,7.5vw,68px);font-weight:600;line-height:1.12;color:var(--text);letter-spacing:-.02em;text-align:center}
   .hl-main .grad{background:linear-gradient(90deg,var(--accent) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-  /* MANIFESTO */
+  /* ── MANIFESTO ── */
   .manifesto{max-width:560px;text-align:center;margin-bottom:56px;animation:up 1s .25s ease both;width:100%;display:flex;flex-direction:column;align-items:center}
   .manifesto p{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(16px,2.2vw,19px);font-weight:300;line-height:1.9;color:var(--sub);letter-spacing:.01em;text-align:center;width:100%}
   .manifesto p strong{font-weight:500;color:#b0c8e8}
+  [data-theme="light"] .manifesto p strong{color:#2a4070}
 
   .vdiv{width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--muted),transparent);margin-bottom:52px;animation:fadein 1s .35s ease both}
 
-  /* COUNTDOWN */
+  /* ── COUNTDOWN ── */
   .cd-wrap{width:100%;max-width:640px;margin-bottom:24px;animation:up 1s .4s ease both}
   .cd-eyebrow{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-bottom:22px}
   .cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
@@ -63,12 +178,20 @@
   .cd-date{text-align:center;margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:2px}
   .cd-date strong{color:var(--gold);font-weight:400}
 
-  /* SECTION DIV */
+  /* ── SECTION DIVIDERS ── */
   .section-div{width:100%;max-width:760px;display:flex;align-items:center;gap:16px;margin:64px 0 48px;animation:fadein 1s .5s ease both}
   .section-div::before,.section-div::after{content:'';flex:1;height:1px;background:var(--border)}
-  .section-div span{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+  .section-div span{
+    font-family:'DM Sans',sans-serif;
+    font-size:11px;
+    letter-spacing:1.5px;
+    color:var(--sub);
+    font-weight:400;
+    white-space:nowrap;
+    opacity:.85;
+  }
 
-  /* CREDENTIALS */
+  /* ── CREDENTIALS ── */
   .cred-wrap{width:100%;max-width:760px;animation:up 1s .45s ease both}
   .cred-intro{text-align:center;margin-bottom:36px}
   .cred-intro-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:14px;opacity:.8}
@@ -78,14 +201,14 @@
   .cred-card{border:1px solid var(--border-g);border-radius:16px;padding:36px 32px;background:linear-gradient(135deg,rgba(201,168,76,0.05) 0%,rgba(201,168,76,0.02) 100%);position:relative;overflow:hidden;transition:border-color .3s,transform .2s}
   .cred-card:hover{border-color:rgba(201,168,76,0.35);transform:translateY(-2px)}
   .cred-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6}
-  .cred-org{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold-dim);text-transform:uppercase;margin-bottom:20px}
-  .cred-number{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(52px,8vw,80px);font-weight:600;line-height:1;letter-spacing:-.04em;margin-bottom:6px;background:linear-gradient(135deg,#fff 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .cred-org{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.5px;color:var(--gold-dim);margin-bottom:20px;font-weight:400}
+  .cred-number{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(52px,8vw,80px);font-weight:600;line-height:1;letter-spacing:-.04em;margin-bottom:6px;background:linear-gradient(135deg,var(--cred-num-start) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
   .cred-number-sub{font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:400;color:var(--gold);letter-spacing:.5px;margin-bottom:16px}
   .cred-desc{font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:300;color:var(--sub);line-height:1.7}
-  .cred-badge{display:inline-flex;align-items:center;gap:6px;margin-top:16px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:6px;padding:5px 12px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+  .cred-badge{display:inline-flex;align-items:center;gap:6px;margin-top:16px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:6px;padding:5px 12px;font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.5px;color:var(--gold)}
   .cred-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.8}
 
-  /* PLATFORM */
+  /* ── PLATFORM ── */
   .platform{width:100%;max-width:760px;animation:up 1s .55s ease both}
   .platform-header{text-align:center;margin-bottom:32px}
   .platform-title{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:600;color:var(--text);margin-bottom:10px;letter-spacing:-.02em}
@@ -93,7 +216,7 @@
   .platform-desc{font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:var(--sub);font-weight:300;letter-spacing:.2px;line-height:1.7}
   .analysis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
   .analysis-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 20px;position:relative;overflow:hidden;transition:border-color .3s,background .3s}
-  .analysis-card:hover{border-color:rgba(79,143,255,0.22);background:rgba(79,143,255,0.04)}
+  .analysis-card:hover{border-color:rgba(79,143,255,0.22);background:var(--surface-hover)}
   .analysis-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .3s}
   .analysis-card:hover::after{opacity:.4}
   .analysis-card.gold{border-color:var(--border-g)}
@@ -107,102 +230,226 @@
   .wide-left{flex:1;min-width:0}
   .score-pill{background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:16px 28px;font-family:'IBM Plex Sans',sans-serif;font-size:48px;font-weight:300;color:var(--gold);line-height:1;text-align:center;flex-shrink:0;min-width:100px}
 
-  /* DIFF TABLE */
+  /* ── DIFF TABLE ── */
   .diff-wrap{width:100%;max-width:760px;animation:up 1s .6s ease both}
   .diff-table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden}
-  .diff-table th{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:14px 20px;font-weight:400}
-  .diff-table th:first-child{text-align:left;color:var(--muted);background:rgba(255,255,255,0.02);width:36%}
-  .diff-table th.col-wp{color:#fff;background:rgba(79,143,255,0.18);border-bottom:1px solid rgba(79,143,255,0.3);text-align:center}
-  .diff-table th.col-other{color:var(--muted);background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border);text-align:center}
+  .diff-table th{font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.8px;text-transform:uppercase;padding:14px 20px;font-weight:500}
+  .diff-table th:first-child{text-align:left;color:var(--muted);background:var(--surface);width:36%}
+  .diff-table th.col-wp{color:var(--text);background:rgba(79,143,255,0.18);border-bottom:1px solid rgba(79,143,255,0.3);text-align:center}
+  .diff-table th.col-other{color:var(--muted);background:var(--surface);border-bottom:1px solid var(--border);text-align:center}
   .diff-table td{padding:14px 20px;font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:300;border-top:1px solid var(--border)}
-  .diff-table td:first-child{color:var(--sub);background:rgba(255,255,255,0.015)}
-  .diff-table td.col-wp{text-align:center;color:var(--text);background:rgba(79,143,255,0.06);font-weight:400}
-  .diff-table td.col-other{text-align:center;color:var(--muted);background:rgba(255,255,255,0.015)}
+  .diff-table td:first-child{color:var(--sub);background:var(--diff-other-bg)}
+  .diff-table td.col-wp{text-align:center;color:var(--diff-feat-text);background:var(--diff-feat-bg);font-weight:400}
+  .diff-table td.col-other{text-align:center;color:var(--muted);background:var(--diff-other-bg)}
 
-  /* PILLARS */
+  /* ── PILLARS ── */
   .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:640px;margin-bottom:56px;animation:up 1s .65s ease both}
   .pillar{border:1px solid var(--border);border-radius:12px;padding:26px 20px}
   .pillar-num{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold-dim);margin-bottom:12px}
   .pillar-title{font-family:'IBM Plex Sans',sans-serif;font-size:16px;font-weight:600;color:var(--text);margin-bottom:12px;letter-spacing:-.01em}
   .pillar-desc{font-family:'IBM Plex Sans',sans-serif;font-size:12.5px;font-weight:300;color:var(--muted);line-height:1.9}
 
-  /* ALPHA */
+  /* ─────────────────────────────────────────────────────
+     ALPHA — unified bidirectional card
+  ───────────────────────────────────────────────────── */
   .alpha-wrap{width:100%;max-width:760px;animation:up 1s .5s ease both;margin-bottom:0}
   .alpha-header{text-align:center;margin-bottom:28px}
   .alpha-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;opacity:.9}
   .alpha-title{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(18px,2.5vw,24px);font-weight:600;color:var(--text);letter-spacing:-.02em}
   .alpha-title span{background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-  .alpha-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  .alpha-card{border-radius:14px;padding:28px 20px;text-align:center;position:relative;overflow:hidden;transition:transform .2s,border-color .3s}
-  .alpha-card:hover{transform:translateY(-2px)}
-  .alpha-card.bull{background:linear-gradient(135deg,rgba(79,143,255,0.08),rgba(79,143,255,0.03));border:1px solid rgba(79,143,255,0.2)}
-  .alpha-card.bear{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.03));border:1px solid rgba(201,168,76,0.2)}
-  .alpha-card.side{background:linear-gradient(135deg,rgba(92,184,122,0.08),rgba(92,184,122,0.03));border:1px solid rgba(92,184,122,0.2)}
-  .alpha-card::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px}
-  .alpha-card.bull::before{background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-  .alpha-card.bear::before{background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-  .alpha-card.side::before{background:linear-gradient(90deg,transparent,#5cb87a,transparent)}
-  .alpha-regime{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;opacity:.7}
-  .alpha-card.bull .alpha-regime{color:var(--accent)}
-  .alpha-card.bear .alpha-regime{color:var(--gold)}
-  .alpha-card.side .alpha-regime{color:#5cb87a}
-  .alpha-main{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:600;line-height:1;letter-spacing:-.03em;margin-bottom:6px}
-  .alpha-card.bull .alpha-main{color:var(--accent)}
-  .alpha-card.bear .alpha-main{color:var(--gold)}
-  .alpha-card.side .alpha-main{color:#5cb87a}
-  .alpha-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:14px;text-transform:uppercase}
-  .alpha-compare{display:flex;flex-direction:column;gap:5px}
-  .alpha-row{display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Sans',sans-serif;font-size:11.5px;font-weight:300;padding:4px 0;border-top:1px solid rgba(255,255,255,0.04)}
-  .alpha-row-label{color:var(--muted)}
-  .alpha-row-val{color:var(--sub)}
-  .alpha-note{text-align:center;margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted)}
 
-  /* DALBAR */
+  /* Unified card — gold (like cred-card) */
+  .alpha-unified-card{
+    background:linear-gradient(135deg,rgba(201,168,76,0.07) 0%,rgba(201,168,76,0.02) 100%);
+    border:1px solid var(--border-g);
+    border-radius:20px;
+    padding:40px 40px 32px;
+    position:relative;
+    overflow:hidden;
+    transition:border-color .3s;
+  }
+  .alpha-unified-card:hover{border-color:rgba(201,168,76,0.35)}
+  .alpha-unified-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    opacity:.65;
+  }
+
+  /* Bidirectional badge — gold */
+  .alpha-badge-row{text-align:center;margin-bottom:16px}
+  .alpha-bidir-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(201,168,76,0.12);
+    border:1px solid rgba(201,168,76,0.3);
+    border-radius:100px;
+    padding:6px 18px;
+    font-family:'DM Sans',sans-serif;
+    font-size:11px;
+    color:var(--gold);
+    letter-spacing:.3px;
+    font-weight:500;
+  }
+  .alpha-bidir-badge::before,.alpha-bidir-badge::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.8}
+
+  /* Tagline */
+  .alpha-tagline{
+    text-align:center;
+    margin-bottom:36px;
+    font-family:'DM Sans',sans-serif;
+    font-size:clamp(14px,1.8vw,16px);
+    font-weight:300;
+    color:var(--sub);
+    letter-spacing:.1px;
+    line-height:1.8;
+  }
+
+  /* Two regime columns */
+  .alpha-two-regimes{
+    display:grid;
+    grid-template-columns:1fr 1px 1fr;
+    gap:0;
+    align-items:center;
+    margin-bottom:28px;
+  }
+  .alpha-regime-side{
+    padding:20px 32px;
+    text-align:center;
+  }
+  .alpha-regime-divider{
+    height:130px;
+    background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.3),transparent);
+  }
+  [data-theme="light"] .alpha-regime-divider{background:linear-gradient(to bottom,transparent,rgba(122,90,16,0.25),transparent)}
+  .regime-tag{
+    font-family:'DM Sans',sans-serif;
+    font-size:11.5px;
+    font-weight:400;
+    color:var(--muted);
+    margin-bottom:14px;
+    letter-spacing:.3px;
+  }
+  .regime-alpha{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:clamp(48px,7vw,72px);
+    font-weight:600;
+    background:linear-gradient(135deg,var(--cred-num-start) 0%,var(--gold) 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    line-height:1;
+    letter-spacing:-.04em;
+    margin-bottom:6px;
+  }
+  .regime-unit{
+    font-size:.42em;
+    font-weight:400;
+    vertical-align:super;
+    margin-left:1px;
+    letter-spacing:0;
+  }
+  .regime-subtitle{
+    font-family:'DM Sans',sans-serif;
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:16px;
+    letter-spacing:.2px;
+  }
+  .regime-compare{display:flex;flex-direction:column;gap:0}
+  .regime-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:12px;
+    font-weight:300;
+    padding:5px 0;
+    border-top:1px solid var(--row-border);
+  }
+  .r-label{color:var(--muted)}
+  .r-accent{color:var(--accent);font-weight:500}
+  .r-neg{color:#e06060;font-weight:500}
+  [data-theme="light"] .r-neg{color:#c04040}
+  .r-muted{color:var(--sub)}
+
+  .alpha-note{
+    text-align:center;
+    font-family:'DM Sans',sans-serif;
+    font-size:10px;
+    color:var(--muted);
+    letter-spacing:.3px;
+  }
+
+  /* ─────────────────────────────────────────────────────
+     DALBAR — font humanisation
+  ───────────────────────────────────────────────────── */
   .dalbar-wrap{width:100%;max-width:760px;margin-top:48px;animation:up 1s .55s ease both}
-  .dalbar-box{border:1px solid rgba(201,168,76,0.18);border-radius:14px;padding:32px 36px;background:linear-gradient(135deg,rgba(201,168,76,0.06) 0%,rgba(201,168,76,0.02) 100%);position:relative;overflow:hidden;display:flex;align-items:center;gap:32px}
+  .dalbar-box{border:1px solid var(--border-g);border-radius:14px;padding:32px 36px;background:linear-gradient(135deg,rgba(201,168,76,0.06) 0%,rgba(201,168,76,0.02) 100%);position:relative;overflow:hidden;display:flex;align-items:center;gap:32px}
   .dalbar-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5}
   .dalbar-stat{flex-shrink:0;text-align:center}
-  .dalbar-num{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(44px,7vw,72px);font-weight:600;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,#fff 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-  .dalbar-num-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--gold-dim);margin-top:6px;text-transform:uppercase}
+  .dalbar-num{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(44px,7vw,72px);font-weight:600;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,var(--cred-num-start) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  /* Changed: DM Sans, no mono, more natural */
+  .dalbar-num-sub{
+    font-family:'DM Sans',sans-serif;
+    font-size:10px;
+    letter-spacing:.4px;
+    color:var(--gold-dim);
+    margin-top:6px;
+  }
   .dalbar-divider{width:1px;height:80px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.3),transparent);flex-shrink:0}
   .dalbar-text{flex:1}
-  .dalbar-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold-dim);text-transform:uppercase;margin-bottom:12px}
+  /* Changed: DM Sans for label */
+  .dalbar-label{
+    font-family:'DM Sans',sans-serif;
+    font-size:10.5px;
+    letter-spacing:.5px;
+    color:var(--gold-dim);
+    margin-bottom:12px;
+    font-weight:500;
+  }
   .dalbar-headline{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(15px,2vw,18px);font-weight:600;color:var(--text);line-height:1.4;margin-bottom:10px;letter-spacing:-.01em}
   .dalbar-desc{font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:300;color:var(--sub);line-height:1.75}
   .dalbar-desc strong{font-weight:500;color:var(--text)}
-  .dalbar-source{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:1.5px;color:var(--muted);margin-top:12px}
+  /* Changed: DM Sans for source, not mono */
+  .dalbar-source{
+    font-family:'DM Sans',sans-serif;
+    font-size:9px;
+    letter-spacing:.3px;
+    color:var(--muted);
+    margin-top:12px;
+    opacity:.8;
+  }
 
-  /* DISCLAIMER */
+  /* ── DISCLAIMER ── */
   .disclaimer{width:100%;max-width:640px;margin-bottom:40px;margin-top:0;animation:fadein 1s .7s ease both}
-  .disclaimer-box{border:1px solid rgba(201,168,76,0.12);border-radius:10px;padding:20px 24px;background:rgba(201,168,76,0.03)}
-  .disclaimer-title{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold-dim);text-transform:uppercase;margin-bottom:10px}
+  .disclaimer-box{border:1px solid var(--border-g);border-radius:10px;padding:20px 24px;background:rgba(201,168,76,0.03)}
+  .disclaimer-title{font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.5px;color:var(--gold-dim);margin-bottom:10px;font-weight:500}
   .disclaimer-text{font-family:'IBM Plex Sans',sans-serif;font-size:11.5px;font-weight:300;color:var(--muted);line-height:1.8;letter-spacing:.2px}
 
-  /* NOTIFY */
+  /* ── NOTIFY ── */
   .notify{width:100%;max-width:520px;text-align:center;animation:up 1s .75s ease both;margin-bottom:56px}
   .notify-wrap-box{border:1px solid rgba(79,143,255,0.22);border-radius:16px;padding:36px 32px;background:rgba(79,143,255,0.04);position:relative;overflow:hidden}
   .notify-wrap-box::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6}
   .notify-label{font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:600;color:var(--text);margin-bottom:6px;letter-spacing:-.01em}
   .notify-sublabel{font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:300;color:var(--sub);margin-bottom:20px}
-  .notify-countdown{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(79,143,255,0.12);border-radius:10px;padding:12px 16px}
+  .notify-countdown{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:24px;background:var(--surface);border:1px solid rgba(79,143,255,0.12);border-radius:10px;padding:12px 16px}
   .ncd-item{display:flex;flex-direction:column;align-items:center;min-width:36px}
   .ncd-num{font-family:'IBM Plex Sans',sans-serif;font-size:22px;font-weight:300;color:var(--accent);line-height:1;letter-spacing:-.02em}
   .ncd-unit{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--muted);margin-top:3px}
   .ncd-sep{font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--muted);opacity:.4;line-height:1;margin-bottom:10px}
   .notify-row{display:flex;gap:8px}
-  .notify-input{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(79,143,255,0.3);border-radius:10px;padding:15px 18px;color:var(--text);outline:none;font-family:'IBM Plex Mono',monospace;font-size:13px;transition:border-color .25s,background .25s}
+  .notify-input{flex:1;background:var(--surface);border:1px solid rgba(79,143,255,0.3);border-radius:10px;padding:15px 18px;color:var(--text);outline:none;font-family:'IBM Plex Mono',monospace;font-size:13px;transition:border-color .25s,background .25s}
   .notify-input::placeholder{color:var(--muted)}
   .notify-input:focus{border-color:rgba(79,143,255,0.7);background:rgba(79,143,255,0.08);box-shadow:0 0 0 3px rgba(79,143,255,0.1)}
   .notify-btn{background:linear-gradient(135deg,var(--accent),#2652cc);border:none;border-radius:10px;padding:15px 26px;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:opacity .2s,transform .15s;box-shadow:0 4px 20px rgba(79,143,255,0.25)}
   .notify-btn:hover{opacity:.88;transform:translateY(-1px);box-shadow:0 6px 24px rgba(79,143,255,0.35)}
   .notify-ok{display:none;font-family:'IBM Plex Sans',sans-serif;font-size:15px;font-weight:300;color:#5cb87a;margin-top:16px}
-  .footer{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#1c2840;letter-spacing:2px;animation:fadein 1.2s .9s ease both}
+  .footer{font-family:'DM Sans',sans-serif;font-size:10px;color:var(--muted);letter-spacing:1.5px;animation:fadein 1.2s .9s ease both;opacity:.4}
 
   @keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
   @keyframes fadein{from{opacity:0}to{opacity:1}}
 
   @media(max-width:640px){
-    .page{padding:56px 16px 64px}
+    .page{padding:72px 16px 64px}
     .corner{display:none}
     .cred-cards{grid-template-columns:1fr}
     .cred-card{padding:28px 24px}
@@ -213,9 +460,12 @@
     .cd-grid{gap:7px}
     .cd-box{padding:20px 6px 16px}
     .diff-table th,.diff-table td{padding:10px 12px;font-size:11px}
-    .alpha-grid{grid-template-columns:1fr}
     .dalbar-box{flex-direction:column;gap:20px;padding:24px 20px}
     .dalbar-divider{width:80px;height:1px}
+    .alpha-unified-card{padding:28px 20px 24px}
+    .alpha-two-regimes{grid-template-columns:1fr;gap:0}
+    .alpha-regime-divider{height:1px;width:80%;margin:0 auto;background:linear-gradient(to right,transparent,rgba(79,143,255,0.25),transparent)}
+    .alpha-regime-side{padding:20px 8px}
   }
   @media(max-width:400px){.analysis-grid{grid-template-columns:1fr}}
 </style>
@@ -224,12 +474,18 @@
 <div class="topline"></div>
 <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
 
-<div class="lang-btn">
-  <button class="lang-opt active" id="btnKo" onclick="setLang('ko')">KO</button>
-  <button class="lang-opt" id="btnEn" onclick="setLang('en')">EN</button>
-</div>
-
 <div class="page">
+
+  <!-- Top bar: lang toggle + theme toggle — NOT fixed, stays at page top -->
+  <div class="top-bar">
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme">
+      <span id="themeIcon">◑</span>
+    </button>
+    <div class="lang-btn">
+      <button class="lang-opt active" id="btnKo" onclick="setLang('ko')">KO</button>
+      <button class="lang-opt" id="btnEn" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
 
   <div class="logo">
     <div class="logo-wordmark">Winslow Point</div>
@@ -379,43 +635,55 @@
 
   <div class="section-div" style="margin-top:64px"><span>Backtest Alpha</span></div>
 
+  <!-- ── ALPHA — Unified Bidirectional Card ── -->
   <div class="alpha-wrap">
     <div class="alpha-header">
       <div class="alpha-label">Walk-Forward Verified · 2015–2024</div>
-      <div class="alpha-title" id="t-alpha-title">3개 시장 국면 모두에서 <span>S&P 500 초과 수익</span></div>
+      <div class="alpha-title" id="t-alpha-title">상승장에서도, 하락장에서도 —<br><span>S&P 500을 초과합니다</span></div>
     </div>
-    <div class="alpha-grid">
-      <div class="alpha-card bull">
-        <div class="alpha-regime" id="t-reg1">상승장 2020–2021</div>
-        <div class="alpha-main">+14.3%p</div>
-        <div class="alpha-sub">Winslow VS S&amp;P 500</div>
-        <div class="alpha-compare">
-          <div class="alpha-row"><span class="alpha-row-label">Winslow</span><span class="alpha-row-val" style="color:var(--accent)">+69.75%</span></div>
-          <div class="alpha-row"><span class="alpha-row-label">S&amp;P 500</span><span class="alpha-row-val">+55.42%</span></div>
+
+    <div class="alpha-unified-card">
+      <!-- Bidirectional badge -->
+      <div class="alpha-badge-row">
+        <span class="alpha-bidir-badge" id="t-alpha-badge">양방향 알파 &nbsp;·&nbsp; Bidirectional Alpha</span>
+      </div>
+
+      <!-- Tagline -->
+      <p class="alpha-tagline" id="t-alpha-tagline">상승장과 하락장, 멈추지 않는 수익률<br>시장 상황과 관련 없는 초과 수익</p>
+
+      <!-- Two regime columns -->
+      <div class="alpha-two-regimes">
+        <!-- Bull -->
+        <div class="alpha-regime-side">
+          <div class="regime-tag" id="t-reg1">상승장 &nbsp;·&nbsp; 2020–2021</div>
+          <div class="regime-alpha">+14.3<span class="regime-unit">%p</span></div>
+          <div class="regime-subtitle" id="t-reg1-sub">S&P 500 대비 초과 수익</div>
+          <div class="regime-compare">
+            <div class="regime-row"><span class="r-label">Winslow</span><span class="r-accent">+69.75%</span></div>
+            <div class="regime-row"><span class="r-label">S&P 500</span><span class="r-muted">+55.42%</span></div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="alpha-regime-divider"></div>
+
+        <!-- Bear -->
+        <div class="alpha-regime-side">
+          <div class="regime-tag" id="t-reg2">하락장 &nbsp;·&nbsp; 2022</div>
+          <div class="regime-alpha">+20.2<span class="regime-unit">%p</span></div>
+          <div class="regime-subtitle" id="t-reg2-sub">시장이 무너져도 수익 유지</div>
+          <div class="regime-compare">
+            <div class="regime-row"><span class="r-label">Winslow</span><span class="r-accent">+1.62%</span></div>
+            <div class="regime-row"><span class="r-label">S&P 500</span><span class="r-neg">−18.62%</span></div>
+          </div>
         </div>
       </div>
-      <div class="alpha-card bear">
-        <div class="alpha-regime" id="t-reg2">하락장 2022</div>
-        <div class="alpha-main">+20.2%p</div>
-        <div class="alpha-sub">Winslow VS S&amp;P 500</div>
-        <div class="alpha-compare">
-          <div class="alpha-row"><span class="alpha-row-label">Winslow</span><span class="alpha-row-val" style="color:var(--gold)">+1.62%</span></div>
-          <div class="alpha-row"><span class="alpha-row-label">S&amp;P 500</span><span class="alpha-row-val">−18.62%</span></div>
-        </div>
-      </div>
-      <div class="alpha-card side">
-        <div class="alpha-regime" id="t-reg3">횡보장 2023–2024</div>
-        <div class="alpha-main">+1.9%p</div>
-        <div class="alpha-sub">Winslow VS S&amp;P 500</div>
-        <div class="alpha-compare">
-          <div class="alpha-row"><span class="alpha-row-label">Winslow</span><span class="alpha-row-val" style="color:#5cb87a">+36.72%</span></div>
-          <div class="alpha-row"><span class="alpha-row-label">S&amp;P 500</span><span class="alpha-row-val">+34.77%</span></div>
-        </div>
-      </div>
+
+      <div class="alpha-note" id="t-alpha-note">* 상위 20% 포트폴리오 동일가중 &nbsp;·&nbsp; 과적합 검증(Walk-Forward) 완료</div>
     </div>
-    <div class="alpha-note" id="t-alpha-note">* 상위 20% 포트폴리오 동일가중 · 과적합 검증(Walk-Forward) 완료</div>
   </div>
 
+  <!-- ── DALBAR ── -->
   <div class="dalbar-wrap">
     <div class="dalbar-box">
       <div class="dalbar-stat">
@@ -433,6 +701,7 @@
   </div>
 
   <div style="height:64px"></div>
+
   <div class="disclaimer">
     <div class="disclaimer-box">
       <div class="disclaimer-title" id="t-disc-title">투자 유의사항</div>
@@ -465,6 +734,7 @@
 </div>
 
 <script>
+/* ── Countdown ── */
 const TARGET = new Date('2026-04-20T08:00:00+09:00').getTime();
 function pad(n){return String(n).padStart(2,'0')}
 function tick(id,val){const el=document.getElementById(id),next=pad(val);if(el&&el.textContent!==next){el.textContent=next;el.classList.add('tick');setTimeout(()=>el.classList.remove('tick'),160)}}
@@ -479,6 +749,7 @@ function update(){
 }
 update();
 
+/* ── Notify ── */
 function handleNotify(){
   const v=document.getElementById('emailInput').value.trim();
   if(!v||!v.includes('@')){const inp=document.getElementById('emailInput');inp.style.borderColor='rgba(255,80,80,0.4)';setTimeout(()=>inp.style.borderColor='',1500);return}
@@ -486,6 +757,28 @@ function handleNotify(){
   document.getElementById('notifyOk').style.display='block';
 }
 
+/* ── Theme toggle ── */
+function getEffectiveTheme(){
+  const saved = document.documentElement.getAttribute('data-theme');
+  if(saved==='dark'||saved==='light') return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+function applyThemeIcon(theme){
+  document.getElementById('themeIcon').textContent = theme==='dark' ? '☀' : '◑';
+}
+function toggleTheme(){
+  const current = getEffectiveTheme();
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('wp-theme', next);
+  applyThemeIcon(next);
+}
+// Init icon
+(function(){
+  applyThemeIcon(getEffectiveTheme());
+})();
+
+/* ── Translations ── */
 const T={
   ko:{
     'headline':'뉴스보다 먼저,<br><span class="grad">시장의 이유를 읽다</span>',
@@ -520,9 +813,14 @@ const T={
     'p1t':'선행합니다','p1d':'옵션 플로우와 자금 흐름은 주가 움직임에 선행합니다.<br>뉴스가 나오기 전에 신호가 먼저 발생합니다.',
     'p2t':'증명합니다','p2d':'모든 신호는 수년간의 백테스트로 검증됩니다.<br>오버피팅 확률(PBO)까지 함께 공개합니다.',
     'p3t':'근거를 제시합니다','p3d':'점수만 제시하지 않습니다.<br>어떤 레이어가 신호를 만들었는지,<br>그 이유까지 투명하게 보여줍니다.',
-    'alpha-title':'3개 시장 국면 모두에서 <span>S&P 500 초과 수익</span>',
-    'reg1':'상승장 2020–2021','reg2':'하락장 2022','reg3':'횡보장 2023–2024',
-    'alpha-note':'* 상위 20% 포트폴리오 동일가중 · 과적합 검증(Walk-Forward) 완료',
+    'alpha-title':'상승장에서도, 하락장에서도 —<br><span>S&P 500을 초과합니다</span>',
+    'alpha-badge':'양방향 알파 &nbsp;·&nbsp; Bidirectional Alpha',
+    'alpha-tagline':'상승장과 하락장, 멈추지 않는 수익률<br>시장 상황과 관련 없는 초과 수익',
+    'reg1':'상승장 &nbsp;·&nbsp; 2020–2021',
+    'reg2':'하락장 &nbsp;·&nbsp; 2022',
+    'reg1-sub':'S&P 500 대비 초과 수익',
+    'reg2-sub':'시장이 무너져도 수익 유지',
+    'alpha-note':'* 상위 20% 포트폴리오 동일가중 &nbsp;·&nbsp; 과적합 검증(Walk-Forward) 완료',
     'dalbar-sub':'30년 평균 / 연',
     'dalbar-hl':'지난 30년간 일반 투자자의<br>연 평균 수익률은 4~5%입니다.',
     'dalbar-desc':'감정적 판단, 잘못된 타이밍, 정보의 부재.<br>Winslow Point는 <strong>데이터 기반 판단</strong>으로<br>그 격차를 좁힙니다.',
@@ -567,8 +865,13 @@ const T={
     'p1t':'We Lead.','p1d':'Options flow and capital movement lead price action.<br>Signals fire before the news breaks.',
     'p2t':'We Prove It.','p2d':'Every signal is validated through years of backtesting.<br>Overfitting probability (PBO) is disclosed alongside results.',
     'p3t':'We Show the Why.','p3d':'We don\'t just give you a score.<br>We show you which layer generated the signal<br>and exactly why.',
-    'alpha-title':'Outperforming S&P 500 in <span>All 3 Market Regimes</span>',
-    'reg1':'Bull Market 2020–2021','reg2':'Bear Market 2022','reg3':'Sideways 2023–2024',
+    'alpha-title':'Bull or Bear, We Outperform —<br><span>In Both Directions</span>',
+    'alpha-badge':'Bidirectional Alpha &nbsp;·&nbsp; 양방향 알파',
+    'alpha-tagline':'Bull or bear — returns that never stop.<br>Alpha that works regardless of market direction.',
+    'reg1':'Bull Market &nbsp;·&nbsp; 2020–2021',
+    'reg2':'Bear Market &nbsp;·&nbsp; 2022',
+    'reg1-sub':'Outperformance vs. S&P 500',
+    'reg2-sub':'Stayed positive as markets fell',
     'alpha-note':'* Top 20% equal-weight portfolio · Walk-Forward overfitting verified',
     'dalbar-sub':'30-Year Avg / Year',
     'dalbar-hl':'The average retail investor earned<br>only 4–5% annually over 30 years.',
