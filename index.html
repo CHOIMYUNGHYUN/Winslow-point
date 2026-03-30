@@ -437,9 +437,7 @@ function update(){
 }
 update();
 
-/* ── Notify — Resend 연동 ── */
-const RESEND_API_KEY = 're_NWQpTDWN_3RYbkJHSVpNk5SMbp5zaWhuS';
-
+/* ── Notify — Google Sheets 연동 ── */
 async function handleNotify(){
   const v = document.getElementById('emailInput').value.trim();
   if(!v || !v.includes('@')){
@@ -454,16 +452,12 @@ async function handleNotify(){
   btn.style.pointerEvents = 'none';
 
   try {
-    await fetch('https://api.resend.com/audiences/contacts', {
+    await fetch('https://script.google.com/macros/s/AKfycbzbIBCvIdT3xzodw35h4IB-DdE5mnpg5ITVZ6Gr0CpwhsFpoF_ed3CO94dX1nLac7H5/exec', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + RESEND_API_KEY
-      },
-      body: JSON.stringify({ email: v, unsubscribed: false })
+      body: JSON.stringify({ email: v })
     });
   } catch(e) {
-    console.error('Resend error:', e);
+    console.error(e);
   }
 
   document.querySelector('.notify-row').style.display='none';
