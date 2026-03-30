@@ -120,11 +120,11 @@
   .diff-table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden}
   .diff-table th{font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.8px;text-transform:uppercase;padding:14px 20px;font-weight:500}
   .diff-table th:first-child{text-align:left;color:var(--muted);background:var(--surface);width:36%}
-  .diff-table th.col-wp{color:var(--text);background:rgba(79,143,255,0.18);border-bottom:1px solid rgba(79,143,255,0.3);text-align:center}
+ .diff-table th.col-wp{color:var(--gold);background:rgba(201,168,76,0.15);border-bottom:1px solid rgba(201,168,76,0.4);text-align:center;background-image:linear-gradient(135deg,rgba(201,168,76,0.18) 0%,rgba(201,168,76,0.08) 100%)}
   .diff-table th.col-other{color:var(--muted);background:var(--surface);border-bottom:1px solid var(--border);text-align:center}
   .diff-table td{padding:14px 20px;font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:300;border-top:1px solid var(--border)}
   .diff-table td:first-child{color:var(--sub);background:var(--diff-other-bg)}
-  .diff-table td.col-wp{text-align:center;color:var(--diff-feat-text);background:var(--diff-feat-bg);font-weight:400}
+  .diff-table td.col-wp{text-align:center;color:var(--gold);background:linear-gradient(135deg,rgba(201,168,76,0.08) 0%,rgba(201,168,76,0.03) 100%);font-weight:500}
   .diff-table td.col-other{text-align:center;color:var(--muted);background:var(--diff-other-bg)}
   .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:640px;margin-bottom:56px;animation:up 1s .65s ease both}
   .pillar{border:1px solid var(--border);border-radius:12px;padding:26px 20px}
@@ -531,7 +531,7 @@ const T={
   },
   en:{
     'headline':'Before the News,<br><span class="grad">Read the Market\'s Why</span>',
-    'manifesto':'While others record what already happened,<br>we read the <strong>future</strong> ahead<br>and <strong>prove</strong> the why.',
+    'manifesto':'While others <strong>record what already happened,<br>we read the <strong>future</strong> ahead<br>and <strong>prove</strong> the why.',
     'cred-intro':'Not an algorithm — <strong>designed by a real trader.</strong><br>Years of live trading performance back this platform.',
     'cred1-desc':'Achieved Top 5% ranking among global traders<br>on CME Group, the world\'s largest derivatives exchange.',
     'cred2-org':'Major Korean Brokerage · Live Trading Contest','cred2-sub':'Top · Overseas Stocks',
