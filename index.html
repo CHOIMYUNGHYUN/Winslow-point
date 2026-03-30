@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Winslow Point — Coming Soon</title>
-<!-- Inline theme init to prevent FOUC -->
 <script>
 (function(){
   var saved = localStorage.getItem('wp-theme');
@@ -15,103 +14,33 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
-  /* ── DARK (default) ── */
   :root {
-    --bg:#06080e;
-    --surface:rgba(255,255,255,0.025);
-    --surface-hover:rgba(255,255,255,0.04);
-    --accent:#4f8fff;
-    --gold:#c9a84c;
-    --gold-dim:#7a6230;
-    --text:#d8e2f0;
-    --sub:#8096b8;
-    --muted:#3a4d68;
-    --border:rgba(79,143,255,0.10);
-    --border-g:rgba(201,168,76,0.15);
-    --cred-num-start:#ffffff;
-    --dalbar-num-start:#ffffff;
-    --row-border:rgba(255,255,255,0.04);
-    --scheme:dark;
-    --topline-opacity:.5;
-    --diff-feat-bg:rgba(79,143,255,0.06);
-    --diff-feat-text:var(--text);
-    --diff-other-bg:rgba(255,255,255,0.015);
-  }
-
-  /* ── LIGHT ── */
-  [data-theme="light"],
-  @media (prefers-color-scheme: light) {
-    :root:not([data-theme="dark"]) {
-      --bg:#f0f3f9;
-      --surface:rgba(0,0,0,0.035);
-      --surface-hover:rgba(0,0,0,0.055);
-      --accent:#1a4ed8;
-      --gold:#7a5a10;
-      --gold-dim:#9a7a30;
-      --text:#0d1a35;
-      --sub:#3a507a;
-      --muted:#8090aa;
-      --border:rgba(26,78,216,0.13);
-      --border-g:rgba(122,90,16,0.18);
-      --cred-num-start:#1a2540;
-      --dalbar-num-start:#1a2540;
-      --row-border:rgba(0,0,0,0.05);
-      --scheme:light;
-      --topline-opacity:.7;
-      --diff-feat-bg:rgba(26,78,216,0.07);
-      --diff-feat-text:var(--text);
-      --diff-other-bg:rgba(0,0,0,0.02);
-    }
+    --bg:#06080e;--surface:rgba(255,255,255,0.025);--surface-hover:rgba(255,255,255,0.04);
+    --accent:#4f8fff;--gold:#c9a84c;--gold-dim:#7a6230;--text:#d8e2f0;--sub:#8096b8;
+    --muted:#3a4d68;--border:rgba(79,143,255,0.10);--border-g:rgba(201,168,76,0.15);
+    --cred-num-start:#ffffff;--dalbar-num-start:#ffffff;--row-border:rgba(255,255,255,0.04);
+    --scheme:dark;--topline-opacity:.5;--diff-feat-bg:rgba(79,143,255,0.06);
+    --diff-feat-text:var(--text);--diff-other-bg:rgba(255,255,255,0.015);
   }
   [data-theme="light"] {
-    --bg:#f0f3f9;
-    --surface:rgba(0,0,0,0.035);
-    --surface-hover:rgba(0,0,0,0.055);
-    --accent:#1a4ed8;
-    --gold:#7a5a10;
-    --gold-dim:#9a7a30;
-    --text:#0d1a35;
-    --sub:#3a507a;
-    --muted:#8090aa;
-    --border:rgba(26,78,216,0.13);
-    --border-g:rgba(122,90,16,0.18);
-    --cred-num-start:#1a2540;
-    --dalbar-num-start:#1a2540;
-    --row-border:rgba(0,0,0,0.05);
-    --scheme:light;
-    --topline-opacity:.7;
-    --diff-feat-bg:rgba(26,78,216,0.07);
-    --diff-feat-text:var(--text);
-    --diff-other-bg:rgba(0,0,0,0.02);
+    --bg:#f0f3f9;--surface:rgba(0,0,0,0.035);--surface-hover:rgba(0,0,0,0.055);
+    --accent:#1a4ed8;--gold:#7a5a10;--gold-dim:#9a7a30;--text:#0d1a35;--sub:#3a507a;
+    --muted:#8090aa;--border:rgba(26,78,216,0.13);--border-g:rgba(122,90,16,0.18);
+    --cred-num-start:#1a2540;--dalbar-num-start:#1a2540;--row-border:rgba(0,0,0,0.05);
+    --scheme:light;--topline-opacity:.7;--diff-feat-bg:rgba(26,78,216,0.07);
+    --diff-feat-text:var(--text);--diff-other-bg:rgba(0,0,0,0.02);
   }
   [data-theme="dark"] {
-    --bg:#06080e;
-    --surface:rgba(255,255,255,0.025);
-    --surface-hover:rgba(255,255,255,0.04);
-    --accent:#4f8fff;
-    --gold:#c9a84c;
-    --gold-dim:#7a6230;
-    --text:#d8e2f0;
-    --sub:#8096b8;
-    --muted:#3a4d68;
-    --border:rgba(79,143,255,0.10);
-    --border-g:rgba(201,168,76,0.15);
-    --cred-num-start:#ffffff;
-    --dalbar-num-start:#ffffff;
-    --row-border:rgba(255,255,255,0.04);
-    --scheme:dark;
-    --topline-opacity:.5;
-    --diff-feat-bg:rgba(79,143,255,0.06);
-    --diff-feat-text:var(--text);
-    --diff-other-bg:rgba(255,255,255,0.015);
+    --bg:#06080e;--surface:rgba(255,255,255,0.025);--surface-hover:rgba(255,255,255,0.04);
+    --accent:#4f8fff;--gold:#c9a84c;--gold-dim:#7a6230;--text:#d8e2f0;--sub:#8096b8;
+    --muted:#3a4d68;--border:rgba(79,143,255,0.10);--border-g:rgba(201,168,76,0.15);
+    --cred-num-start:#ffffff;--dalbar-num-start:#ffffff;--row-border:rgba(255,255,255,0.04);
+    --scheme:dark;--topline-opacity:.5;--diff-feat-bg:rgba(79,143,255,0.06);
+    --diff-feat-text:var(--text);--diff-other-bg:rgba(255,255,255,0.015);
   }
-
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;overflow-x:hidden;transition:background .3s,color .3s}
-  .orb{display:none}
   .page{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:80px 24px 80px}
-
   .topline{position:fixed;top:0;left:0;right:0;height:1px;z-index:10;background:linear-gradient(90deg,transparent 0%,var(--accent) 25%,var(--gold) 75%,transparent 100%);opacity:var(--topline-opacity)}
   .corner{position:fixed;width:20px;height:20px}
   .corner::before,.corner::after{content:'';position:absolute;background:var(--muted);opacity:.5}
@@ -119,53 +48,25 @@
   .corner::after{width:1px;height:100%;top:0;left:0}
   .tl{top:30px;left:30px}.tr{top:30px;right:30px;transform:scaleX(-1)}
   .bl{bottom:30px;left:30px;transform:scaleY(-1)}.br{bottom:30px;right:30px;transform:scale(-1)}
-
-  /* ── TOP BAR (not fixed — stays at top of page) ── */
-  .top-bar{
-    position:absolute;top:20px;right:24px;
-    display:flex;align-items:center;gap:8px;
-    z-index:10;
-  }
+  .top-bar{position:absolute;top:20px;right:24px;display:flex;align-items:center;gap:8px;z-index:10}
   .lang-btn{display:flex;align-items:center;background:var(--surface);border:1px solid rgba(79,143,255,0.2);border-radius:8px;overflow:hidden}
   .lang-opt{padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);cursor:pointer;transition:all .2s;border:none;background:transparent}
   .lang-opt.active{background:rgba(79,143,255,0.18);color:var(--accent)}
   .lang-opt:hover:not(.active){color:var(--sub);background:var(--surface-hover)}
-
-  /* Theme toggle */
-  .theme-btn{
-    display:flex;align-items:center;justify-content:center;
-    width:34px;height:34px;
-    background:var(--surface);
-    border:1px solid rgba(79,143,255,0.2);
-    border-radius:8px;
-    color:var(--muted);
-    cursor:pointer;
-    font-size:14px;
-    transition:all .2s;
-    flex-shrink:0;
-  }
+  .theme-btn{display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:var(--surface);border:1px solid rgba(79,143,255,0.2);border-radius:8px;color:var(--muted);cursor:pointer;font-size:14px;transition:all .2s;flex-shrink:0}
   .theme-btn:hover{color:var(--sub);background:var(--surface-hover);border-color:rgba(79,143,255,0.3)}
-
-  /* ── LOGO ── */
   .logo{text-align:center;margin-bottom:60px;margin-top:40px;animation:up 1s ease both}
   .logo-wordmark{font-family:'IBM Plex Sans',sans-serif;font-size:28px;font-weight:600;letter-spacing:8px;color:var(--text);line-height:1;text-transform:uppercase}
   .logo-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:8px}
-
-  /* ── HEADLINE ── */
   .headline{text-align:center;margin-bottom:36px;animation:up 1s .15s ease both;width:100%;display:flex;flex-direction:column;align-items:center}
   .hl-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:22px;opacity:.7;text-align:center}
   .hl-main{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(36px,7.5vw,68px);font-weight:600;line-height:1.12;color:var(--text);letter-spacing:-.02em;text-align:center}
   .hl-main .grad{background:linear-gradient(90deg,var(--accent) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-
-  /* ── MANIFESTO ── */
   .manifesto{max-width:560px;text-align:center;margin-bottom:56px;animation:up 1s .25s ease both;width:100%;display:flex;flex-direction:column;align-items:center}
   .manifesto p{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(16px,2.2vw,19px);font-weight:300;line-height:1.9;color:var(--sub);letter-spacing:.01em;text-align:center;width:100%}
   .manifesto p strong{font-weight:500;color:#b0c8e8}
   [data-theme="light"] .manifesto p strong{color:#2a4070}
-
   .vdiv{width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--muted),transparent);margin-bottom:52px;animation:fadein 1s .35s ease both}
-
-  /* ── COUNTDOWN ── */
   .cd-wrap{width:100%;max-width:640px;margin-bottom:24px;animation:up 1s .4s ease both}
   .cd-eyebrow{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-bottom:22px}
   .cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
@@ -177,21 +78,9 @@
   .cd-unit{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:10px}
   .cd-date{text-align:center;margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:2px}
   .cd-date strong{color:var(--gold);font-weight:400}
-
-  /* ── SECTION DIVIDERS ── */
   .section-div{width:100%;max-width:760px;display:flex;align-items:center;gap:16px;margin:64px 0 48px;animation:fadein 1s .5s ease both}
   .section-div::before,.section-div::after{content:'';flex:1;height:1px;background:var(--border)}
-  .section-div span{
-    font-family:'DM Sans',sans-serif;
-    font-size:11px;
-    letter-spacing:1.5px;
-    color:var(--sub);
-    font-weight:400;
-    white-space:nowrap;
-    opacity:.85;
-  }
-
-  /* ── CREDENTIALS ── */
+  .section-div span{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1.5px;color:var(--sub);font-weight:400;white-space:nowrap;opacity:.85}
   .cred-wrap{width:100%;max-width:760px;animation:up 1s .45s ease both}
   .cred-intro{text-align:center;margin-bottom:36px}
   .cred-intro-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:14px;opacity:.8}
@@ -207,8 +96,6 @@
   .cred-desc{font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:300;color:var(--sub);line-height:1.7}
   .cred-badge{display:inline-flex;align-items:center;gap:6px;margin-top:16px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:6px;padding:5px 12px;font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.5px;color:var(--gold)}
   .cred-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.8}
-
-  /* ── PLATFORM ── */
   .platform{width:100%;max-width:760px;animation:up 1s .55s ease both}
   .platform-header{text-align:center;margin-bottom:32px}
   .platform-title{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:600;color:var(--text);margin-bottom:10px;letter-spacing:-.02em}
@@ -229,8 +116,6 @@
   .analysis-wide:hover{border-color:rgba(201,168,76,0.28)}
   .wide-left{flex:1;min-width:0}
   .score-pill{background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:16px 28px;font-family:'IBM Plex Sans',sans-serif;font-size:48px;font-weight:300;color:var(--gold);line-height:1;text-align:center;flex-shrink:0;min-width:100px}
-
-  /* ── DIFF TABLE ── */
   .diff-wrap{width:100%;max-width:760px;animation:up 1s .6s ease both}
   .diff-table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden}
   .diff-table th{font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.8px;text-transform:uppercase;padding:14px 20px;font-weight:500}
@@ -241,191 +126,54 @@
   .diff-table td:first-child{color:var(--sub);background:var(--diff-other-bg)}
   .diff-table td.col-wp{text-align:center;color:var(--diff-feat-text);background:var(--diff-feat-bg);font-weight:400}
   .diff-table td.col-other{text-align:center;color:var(--muted);background:var(--diff-other-bg)}
-
-  /* ── PILLARS ── */
   .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:640px;margin-bottom:56px;animation:up 1s .65s ease both}
   .pillar{border:1px solid var(--border);border-radius:12px;padding:26px 20px}
   .pillar-num{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold-dim);margin-bottom:12px}
   .pillar-title{font-family:'IBM Plex Sans',sans-serif;font-size:16px;font-weight:600;color:var(--text);margin-bottom:12px;letter-spacing:-.01em}
   .pillar-desc{font-family:'IBM Plex Sans',sans-serif;font-size:12.5px;font-weight:300;color:var(--muted);line-height:1.9}
-
-  /* ─────────────────────────────────────────────────────
-     ALPHA — unified bidirectional card
-  ───────────────────────────────────────────────────── */
   .alpha-wrap{width:100%;max-width:760px;animation:up 1s .5s ease both;margin-bottom:0}
   .alpha-header{text-align:center;margin-bottom:28px}
   .alpha-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;opacity:.9}
   .alpha-title{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(18px,2.5vw,24px);font-weight:600;color:var(--text);letter-spacing:-.02em}
   .alpha-title span{background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-
-  /* Unified card — gold (like cred-card) */
-  .alpha-unified-card{
-    background:linear-gradient(135deg,rgba(201,168,76,0.07) 0%,rgba(201,168,76,0.02) 100%);
-    border:1px solid var(--border-g);
-    border-radius:20px;
-    padding:40px 40px 32px;
-    position:relative;
-    overflow:hidden;
-    transition:border-color .3s;
-  }
+  .alpha-unified-card{background:linear-gradient(135deg,rgba(201,168,76,0.07) 0%,rgba(201,168,76,0.02) 100%);border:1px solid var(--border-g);border-radius:20px;padding:40px 40px 32px;position:relative;overflow:hidden;transition:border-color .3s}
   .alpha-unified-card:hover{border-color:rgba(201,168,76,0.35)}
-  .alpha-unified-card::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
-    opacity:.65;
-  }
-
-  /* Bidirectional badge — gold */
+  .alpha-unified-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.65}
   .alpha-badge-row{text-align:center;margin-bottom:16px}
-  .alpha-bidir-badge{
-    display:inline-flex;align-items:center;gap:8px;
-    background:rgba(201,168,76,0.12);
-    border:1px solid rgba(201,168,76,0.3);
-    border-radius:100px;
-    padding:6px 18px;
-    font-family:'DM Sans',sans-serif;
-    font-size:11px;
-    color:var(--gold);
-    letter-spacing:.3px;
-    font-weight:500;
-  }
+  .alpha-bidir-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);border-radius:100px;padding:6px 18px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--gold);letter-spacing:.3px;font-weight:500}
   .alpha-bidir-badge::before,.alpha-bidir-badge::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.8}
-
-  /* Tagline */
-  .alpha-tagline{
-    text-align:center;
-    margin-bottom:36px;
-    font-family:'DM Sans',sans-serif;
-    font-size:clamp(14px,1.8vw,16px);
-    font-weight:300;
-    color:var(--sub);
-    letter-spacing:.1px;
-    line-height:1.8;
-  }
-
-  /* Two regime columns */
-  .alpha-two-regimes{
-    display:grid;
-    grid-template-columns:1fr 1px 1fr;
-    gap:0;
-    align-items:center;
-    margin-bottom:28px;
-  }
-  .alpha-regime-side{
-    padding:20px 32px;
-    text-align:center;
-  }
-  .alpha-regime-divider{
-    height:130px;
-    background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.3),transparent);
-  }
+  .alpha-tagline{text-align:center;margin-bottom:36px;font-family:'DM Sans',sans-serif;font-size:clamp(14px,1.8vw,16px);font-weight:300;color:var(--sub);letter-spacing:.1px;line-height:1.8}
+  .alpha-two-regimes{display:grid;grid-template-columns:1fr 1px 1fr;gap:0;align-items:center;margin-bottom:28px}
+  .alpha-regime-side{padding:20px 32px;text-align:center}
+  .alpha-regime-divider{height:130px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.3),transparent)}
   [data-theme="light"] .alpha-regime-divider{background:linear-gradient(to bottom,transparent,rgba(122,90,16,0.25),transparent)}
-  .regime-tag{
-    font-family:'DM Sans',sans-serif;
-    font-size:11.5px;
-    font-weight:400;
-    color:var(--muted);
-    margin-bottom:14px;
-    letter-spacing:.3px;
-  }
-  .regime-alpha{
-    font-family:'IBM Plex Sans',sans-serif;
-    font-size:clamp(48px,7vw,72px);
-    font-weight:600;
-    background:linear-gradient(135deg,var(--cred-num-start) 0%,var(--gold) 100%);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-    line-height:1;
-    letter-spacing:-.04em;
-    margin-bottom:6px;
-  }
-  .regime-unit{
-    font-size:.42em;
-    font-weight:400;
-    vertical-align:super;
-    margin-left:1px;
-    letter-spacing:0;
-  }
-  .regime-subtitle{
-    font-family:'DM Sans',sans-serif;
-    font-size:11px;
-    color:var(--muted);
-    margin-bottom:16px;
-    letter-spacing:.2px;
-  }
+  .regime-tag{font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:400;color:var(--muted);margin-bottom:14px;letter-spacing:.3px}
+  .regime-alpha{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(48px,7vw,72px);font-weight:600;background:linear-gradient(135deg,var(--cred-num-start) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;letter-spacing:-.04em;margin-bottom:6px}
+  .regime-unit{font-size:.42em;font-weight:400;vertical-align:super;margin-left:1px;letter-spacing:0}
+  .regime-subtitle{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);margin-bottom:16px;letter-spacing:.2px}
   .regime-compare{display:flex;flex-direction:column;gap:0}
-  .regime-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-family:'IBM Plex Sans',sans-serif;
-    font-size:12px;
-    font-weight:300;
-    padding:5px 0;
-    border-top:1px solid var(--row-border);
-  }
-  .r-label{color:var(--muted)}
-  .r-accent{color:var(--accent);font-weight:500}
-  .r-neg{color:#e06060;font-weight:500}
-  [data-theme="light"] .r-neg{color:#c04040}
+  .regime-row{display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Sans',sans-serif;font-size:12px;font-weight:300;padding:5px 0;border-top:1px solid var(--row-border)}
+  .r-label{color:var(--muted)}.r-accent{color:var(--accent);font-weight:500}
+  .r-neg{color:#e06060;font-weight:500}[data-theme="light"] .r-neg{color:#c04040}
   .r-muted{color:var(--sub)}
-
-  .alpha-note{
-    text-align:center;
-    font-family:'DM Sans',sans-serif;
-    font-size:10px;
-    color:var(--muted);
-    letter-spacing:.3px;
-  }
-
-  /* ─────────────────────────────────────────────────────
-     DALBAR — font humanisation
-  ───────────────────────────────────────────────────── */
+  .alpha-note{text-align:center;font-family:'DM Sans',sans-serif;font-size:10px;color:var(--muted);letter-spacing:.3px}
   .dalbar-wrap{width:100%;max-width:760px;margin-top:48px;animation:up 1s .55s ease both}
   .dalbar-box{border:1px solid var(--border-g);border-radius:14px;padding:32px 36px;background:linear-gradient(135deg,rgba(201,168,76,0.06) 0%,rgba(201,168,76,0.02) 100%);position:relative;overflow:hidden;display:flex;align-items:center;gap:32px}
   .dalbar-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5}
   .dalbar-stat{flex-shrink:0;text-align:center}
   .dalbar-num{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(44px,7vw,72px);font-weight:600;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,var(--cred-num-start) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-  /* Changed: DM Sans, no mono, more natural */
-  .dalbar-num-sub{
-    font-family:'DM Sans',sans-serif;
-    font-size:10px;
-    letter-spacing:.4px;
-    color:var(--gold-dim);
-    margin-top:6px;
-  }
+  .dalbar-num-sub{font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.4px;color:var(--gold-dim);margin-top:6px}
   .dalbar-divider{width:1px;height:80px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.3),transparent);flex-shrink:0}
   .dalbar-text{flex:1}
-  /* Changed: DM Sans for label */
-  .dalbar-label{
-    font-family:'DM Sans',sans-serif;
-    font-size:10.5px;
-    letter-spacing:.5px;
-    color:var(--gold-dim);
-    margin-bottom:12px;
-    font-weight:500;
-  }
+  .dalbar-label{font-family:'DM Sans',sans-serif;font-size:10.5px;letter-spacing:.5px;color:var(--gold-dim);margin-bottom:12px;font-weight:500}
   .dalbar-headline{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(15px,2vw,18px);font-weight:600;color:var(--text);line-height:1.4;margin-bottom:10px;letter-spacing:-.01em}
   .dalbar-desc{font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:300;color:var(--sub);line-height:1.75}
   .dalbar-desc strong{font-weight:500;color:var(--text)}
-  /* Changed: DM Sans for source, not mono */
-  .dalbar-source{
-    font-family:'DM Sans',sans-serif;
-    font-size:9px;
-    letter-spacing:.3px;
-    color:var(--muted);
-    margin-top:12px;
-    opacity:.8;
-  }
-
-  /* ── DISCLAIMER ── */
+  .dalbar-source{font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:.3px;color:var(--muted);margin-top:12px;opacity:.8}
   .disclaimer{width:100%;max-width:640px;margin-bottom:40px;margin-top:0;animation:fadein 1s .7s ease both}
   .disclaimer-box{border:1px solid var(--border-g);border-radius:10px;padding:20px 24px;background:rgba(201,168,76,0.03)}
   .disclaimer-title{font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.5px;color:var(--gold-dim);margin-bottom:10px;font-weight:500}
   .disclaimer-text{font-family:'IBM Plex Sans',sans-serif;font-size:11.5px;font-weight:300;color:var(--muted);line-height:1.8;letter-spacing:.2px}
-
-  /* ── NOTIFY ── */
   .notify{width:100%;max-width:520px;text-align:center;animation:up 1s .75s ease both;margin-bottom:56px}
   .notify-wrap-box{border:1px solid rgba(79,143,255,0.22);border-radius:16px;padding:36px 32px;background:rgba(79,143,255,0.04);position:relative;overflow:hidden}
   .notify-wrap-box::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6}
@@ -444,24 +192,16 @@
   .notify-btn:hover{opacity:.88;transform:translateY(-1px);box-shadow:0 6px 24px rgba(79,143,255,0.35)}
   .notify-ok{display:none;font-family:'IBM Plex Sans',sans-serif;font-size:15px;font-weight:300;color:#5cb87a;margin-top:16px}
   .footer{font-family:'DM Sans',sans-serif;font-size:10px;color:var(--muted);letter-spacing:1.5px;animation:fadein 1.2s .9s ease both;opacity:.4}
-
   @keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
   @keyframes fadein{from{opacity:0}to{opacity:1}}
-
   @media(max-width:640px){
-    .page{padding:72px 16px 64px}
-    .corner{display:none}
-    .cred-cards{grid-template-columns:1fr}
-    .cred-card{padding:28px 24px}
-    .analysis-grid{grid-template-columns:1fr 1fr}
-    .pillars{grid-template-columns:1fr}
-    .notify-row{flex-direction:column}
-    .analysis-wide{flex-direction:column;align-items:flex-start;gap:16px}
-    .cd-grid{gap:7px}
-    .cd-box{padding:20px 6px 16px}
+    .page{padding:72px 16px 64px}.corner{display:none}
+    .cred-cards{grid-template-columns:1fr}.cred-card{padding:28px 24px}
+    .analysis-grid{grid-template-columns:1fr 1fr}.pillars{grid-template-columns:1fr}
+    .notify-row{flex-direction:column}.analysis-wide{flex-direction:column;align-items:flex-start;gap:16px}
+    .cd-grid{gap:7px}.cd-box{padding:20px 6px 16px}
     .diff-table th,.diff-table td{padding:10px 12px;font-size:11px}
-    .dalbar-box{flex-direction:column;gap:20px;padding:24px 20px}
-    .dalbar-divider{width:80px;height:1px}
+    .dalbar-box{flex-direction:column;gap:20px;padding:24px 20px}.dalbar-divider{width:80px;height:1px}
     .alpha-unified-card{padding:28px 20px 24px}
     .alpha-two-regimes{grid-template-columns:1fr;gap:0}
     .alpha-regime-divider{height:1px;width:80%;margin:0 auto;background:linear-gradient(to right,transparent,rgba(79,143,255,0.25),transparent)}
@@ -475,8 +215,6 @@
 <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
 
 <div class="page">
-
-  <!-- Top bar: lang toggle + theme toggle — NOT fixed, stays at page top -->
   <div class="top-bar">
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme">
       <span id="themeIcon">◑</span>
@@ -547,36 +285,12 @@
       <p class="platform-desc" id="t-platform-desc">단일 신호의 한계를 넘어 6개의 독립적 분석 레이어가 서로를 검증하고 수렴할 때, 신호는 확신이 됩니다.</p>
     </div>
     <div class="analysis-grid">
-      <div class="analysis-card">
-        <div class="card-index">Layer 01</div>
-        <div class="card-title" id="t-l1t">퀀트 모멘텀 신호</div>
-        <div class="card-desc" id="t-l1d">가격·거래량 기반 통계 모델. 503개 전 종목에 대해 매일 신호를 산출하고 백테스트 PBO를 검증합니다.</div>
-      </div>
-      <div class="analysis-card">
-        <div class="card-index">Layer 02</div>
-        <div class="card-title" id="t-l2t">옵션 플로우 분석</div>
-        <div class="card-desc" id="t-l2d">Put/Call Ratio, 이상 옵션 거래량, 내재 변동성 왜도를 추적하여 기관의 포지셔닝 방향을 선행 포착합니다.</div>
-      </div>
-      <div class="analysis-card gold">
-        <div class="card-index">Layer 03</div>
-        <div class="card-title" id="t-l3t">섹터 ETF 자금 흐름</div>
-        <div class="card-desc" id="t-l3d">11개 SPDR 섹터 ETF의 자금 유출입과 상대 강도로 시장 주도 섹터와 로테이션 방향을 판별합니다.</div>
-      </div>
-      <div class="analysis-card">
-        <div class="card-index">Layer 04</div>
-        <div class="card-title" id="t-l4t">매크로 선행 지표</div>
-        <div class="card-desc" id="t-l4d">VIX 구조, 수익률 곡선, 달러 인덱스, 원자재 상관관계로 시장 국면(regime)을 분류하고 신호를 가중합니다.</div>
-      </div>
-      <div class="analysis-card">
-        <div class="card-index">Layer 05</div>
-        <div class="card-title" id="t-l5t">실적 서프라이즈 모델</div>
-        <div class="card-desc" id="t-l5d">EPS 컨센서스 대비 이탈도, 어닝 모멘텀, 애널리스트 리비전 방향성을 통합하여 이벤트 리스크를 수치화합니다.</div>
-      </div>
-      <div class="analysis-card gold">
-        <div class="card-index">Layer 06</div>
-        <div class="card-title" id="t-l6t">AI 종합 판단</div>
-        <div class="card-desc" id="t-l6d">5개 레이어의 신호를 ML 앙상블로 통합. 충돌 시 신뢰도를 하향하고, 수렴 시 확신도를 상향합니다.</div>
-      </div>
+      <div class="analysis-card"><div class="card-index">Layer 01</div><div class="card-title" id="t-l1t">퀀트 모멘텀 신호</div><div class="card-desc" id="t-l1d">가격·거래량 기반 통계 모델. 503개 전 종목에 대해 매일 신호를 산출하고 백테스트 PBO를 검증합니다.</div></div>
+      <div class="analysis-card"><div class="card-index">Layer 02</div><div class="card-title" id="t-l2t">옵션 플로우 분석</div><div class="card-desc" id="t-l2d">Put/Call Ratio, 이상 옵션 거래량, 내재 변동성 왜도를 추적하여 기관의 포지셔닝 방향을 선행 포착합니다.</div></div>
+      <div class="analysis-card gold"><div class="card-index">Layer 03</div><div class="card-title" id="t-l3t">섹터 ETF 자금 흐름</div><div class="card-desc" id="t-l3d">11개 SPDR 섹터 ETF의 자금 유출입과 상대 강도로 시장 주도 섹터와 로테이션 방향을 판별합니다.</div></div>
+      <div class="analysis-card"><div class="card-index">Layer 04</div><div class="card-title" id="t-l4t">매크로 선행 지표</div><div class="card-desc" id="t-l4d">VIX 구조, 수익률 곡선, 달러 인덱스, 원자재 상관관계로 시장 국면(regime)을 분류하고 신호를 가중합니다.</div></div>
+      <div class="analysis-card"><div class="card-index">Layer 05</div><div class="card-title" id="t-l5t">실적 서프라이즈 모델</div><div class="card-desc" id="t-l5d">EPS 컨센서스 대비 이탈도, 어닝 모멘텀, 애널리스트 리비전 방향성을 통합하여 이벤트 리스크를 수치화합니다.</div></div>
+      <div class="analysis-card gold"><div class="card-index">Layer 06</div><div class="card-title" id="t-l6t">AI 종합 판단</div><div class="card-desc" id="t-l6d">5개 레이어의 신호를 ML 앙상블로 통합. 충돌 시 신뢰도를 하향하고, 수렴 시 확신도를 상향합니다.</div></div>
     </div>
     <div class="analysis-wide">
       <div class="wide-left">
@@ -616,44 +330,24 @@
   <div class="section-div" style="margin-top:64px"><span id="t-sec-why">Why Winslow Point</span></div>
 
   <div class="pillars">
-    <div class="pillar">
-      <div class="pillar-num">01</div>
-      <div class="pillar-title" id="t-p1t">선행합니다</div>
-      <div class="pillar-desc" id="t-p1d">옵션 플로우와 자금 흐름은 주가 움직임에 선행합니다.<br>뉴스가 나오기 전에 신호가 먼저 발생합니다.</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">02</div>
-      <div class="pillar-title" id="t-p2t">증명합니다</div>
-      <div class="pillar-desc" id="t-p2d">모든 신호는 수년간의 백테스트로 검증됩니다.<br>오버피팅 확률(PBO)까지 함께 공개합니다.</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">03</div>
-      <div class="pillar-title" id="t-p3t">근거를 제시합니다</div>
-      <div class="pillar-desc" id="t-p3d">점수만 제시하지 않습니다.<br>어떤 레이어가 신호를 만들었는지,<br>그 이유까지 투명하게 보여줍니다.</div>
-    </div>
+    <div class="pillar"><div class="pillar-num">01</div><div class="pillar-title" id="t-p1t">선행합니다</div><div class="pillar-desc" id="t-p1d">옵션 플로우와 자금 흐름은 주가 움직임에 선행합니다.<br>뉴스가 나오기 전에 신호가 먼저 발생합니다.</div></div>
+    <div class="pillar"><div class="pillar-num">02</div><div class="pillar-title" id="t-p2t">증명합니다</div><div class="pillar-desc" id="t-p2d">모든 신호는 수년간의 백테스트로 검증됩니다.<br>오버피팅 확률(PBO)까지 함께 공개합니다.</div></div>
+    <div class="pillar"><div class="pillar-num">03</div><div class="pillar-title" id="t-p3t">근거를 제시합니다</div><div class="pillar-desc" id="t-p3d">점수만 제시하지 않습니다.<br>어떤 레이어가 신호를 만들었는지,<br>그 이유까지 투명하게 보여줍니다.</div></div>
   </div>
 
   <div class="section-div" style="margin-top:64px"><span>Backtest Alpha</span></div>
 
-  <!-- ── ALPHA — Unified Bidirectional Card ── -->
   <div class="alpha-wrap">
     <div class="alpha-header">
       <div class="alpha-label">Walk-Forward Verified · 2015–2024</div>
       <div class="alpha-title" id="t-alpha-title">상승장에서도, 하락장에서도 <br><span>S&P 500을 초과합니다</span></div>
     </div>
-
     <div class="alpha-unified-card">
-      <!-- Bidirectional badge -->
       <div class="alpha-badge-row">
         <span class="alpha-bidir-badge" id="t-alpha-badge">양방향 알파 &nbsp;·&nbsp; Bidirectional Alpha</span>
       </div>
-
-      <!-- Tagline -->
       <p class="alpha-tagline" id="t-alpha-tagline">상승장과 하락장, 멈추지 않는 수익률<br>시장 상황과 관련 없는 초과 수익</p>
-
-      <!-- Two regime columns -->
       <div class="alpha-two-regimes">
-        <!-- Bull -->
         <div class="alpha-regime-side">
           <div class="regime-tag" id="t-reg1">상승장 &nbsp;·&nbsp; 2020–2021</div>
           <div class="regime-alpha">+14.3<span class="regime-unit">%p</span></div>
@@ -663,11 +357,7 @@
             <div class="regime-row"><span class="r-label">S&P 500</span><span class="r-muted">+55.42%</span></div>
           </div>
         </div>
-
-        <!-- Divider -->
         <div class="alpha-regime-divider"></div>
-
-        <!-- Bear -->
         <div class="alpha-regime-side">
           <div class="regime-tag" id="t-reg2">하락장 &nbsp;·&nbsp; 2022</div>
           <div class="regime-alpha">+20.2<span class="regime-unit">%p</span></div>
@@ -678,12 +368,10 @@
           </div>
         </div>
       </div>
-
       <div class="alpha-note" id="t-alpha-note">* 상위 20% 포트폴리오 동일가중 &nbsp;·&nbsp; 과적합 검증(Walk-Forward) 완료</div>
     </div>
   </div>
 
-  <!-- ── DALBAR ── -->
   <div class="dalbar-wrap">
     <div class="dalbar-box">
       <div class="dalbar-stat">
@@ -749,10 +437,35 @@ function update(){
 }
 update();
 
-/* ── Notify ── */
-function handleNotify(){
-  const v=document.getElementById('emailInput').value.trim();
-  if(!v||!v.includes('@')){const inp=document.getElementById('emailInput');inp.style.borderColor='rgba(255,80,80,0.4)';setTimeout(()=>inp.style.borderColor='',1500);return}
+/* ── Notify — Resend 연동 ── */
+const RESEND_API_KEY = 're_NWQpTDWN_3RYbkJHSVpNk5SMbp5zaWhuS';
+
+async function handleNotify(){
+  const v = document.getElementById('emailInput').value.trim();
+  if(!v || !v.includes('@')){
+    const inp = document.getElementById('emailInput');
+    inp.style.borderColor='rgba(255,80,80,0.4)';
+    setTimeout(()=>inp.style.borderColor='',1500);
+    return;
+  }
+
+  const btn = document.getElementById('t-notify-btn');
+  btn.style.opacity = '0.5';
+  btn.style.pointerEvents = 'none';
+
+  try {
+    await fetch('https://api.resend.com/audiences/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + RESEND_API_KEY
+      },
+      body: JSON.stringify({ email: v, unsubscribed: false })
+    });
+  } catch(e) {
+    console.error('Resend error:', e);
+  }
+
   document.querySelector('.notify-row').style.display='none';
   document.getElementById('notifyOk').style.display='block';
 }
@@ -773,10 +486,7 @@ function toggleTheme(){
   localStorage.setItem('wp-theme', next);
   applyThemeIcon(next);
 }
-// Init icon
-(function(){
-  applyThemeIcon(getEffectiveTheme());
-})();
+(function(){ applyThemeIcon(getEffectiveTheme()); })();
 
 /* ── Translations ── */
 const T={
@@ -785,11 +495,9 @@ const T={
     'manifesto':'남들이 이미 일어난 <strong>\'무엇\'</strong>을 기록할 때,<br>우리는 다가올 <strong>\'미래\'</strong>를 읽고<br>그 <strong>\'이유\'</strong>를 증명합니다.',
     'cred-intro':'알고리즘이 아니라 <strong>실전 트레이더가 직접 설계했습니다.</strong><br>수년간의 실전 성과가 이 플랫폼의 기반입니다.',
     'cred1-desc':'세계 최대 파생상품 거래소 CME Group의<br>글로벌 트레이더 랭킹 상위 5% 달성',
-    'cred2-org':'국내 주요 증권사 · 실전 투자 대회',
-    'cred2-sub':'해외 주식 부문 상위',
+    'cred2-org':'국내 주요 증권사 · 실전 투자 대회','cred2-sub':'해외 주식 부문 상위',
     'cred2-desc':'국내 주요 증권사 주관 실전 투자 대회<br>해외 주식 부문 전체 참가자 상위 0.1% 달성',
-    'cred2-badge':'Verified · 실전 대회',
-    'sec-platform':'Multi-Analysis Platform',
+    'cred2-badge':'Verified · 실전 대회','sec-platform':'Multi-Analysis Platform',
     'platform-title':'하나의 플랫폼, <span>여섯 가지의 관점</span>',
     'platform-desc':'단일 신호의 한계를 넘어 6개의 독립적 분석 레이어가 서로를 검증하고 수렴할 때, 신호는 확신이 됩니다.',
     'l1t':'퀀트 모멘텀 신호','l1d':'가격·거래량 기반 통계 모델. 503개 전 종목에 대해 매일 신호를 산출하고 백테스트 PBO를 검증합니다.',
@@ -800,9 +508,7 @@ const T={
     'l6t':'AI 종합 판단','l6d':'5개 레이어의 신호를 ML 앙상블로 통합. 충돌 시 신뢰도를 하향하고, 수렴 시 확신도를 상향합니다.',
     'score-title':'6개 레이어의 최종 수렴',
     'score-desc':'S&P 500 503개 종목 각각에 대해 0–100점의 통합 점수를 산출합니다. 어떤 레이어가 신호를 주도했는지 근거와 함께 투명하게 공개됩니다.',
-    'sample-label':'Sample Score',
-    'sec-diff':'Why Not Others',
-    'diff-other':'일반 리서치 / HTS',
+    'sample-label':'Sample Score','sec-diff':'Why Not Others','diff-other':'일반 리서치 / HTS',
     'd1l':'분석 종목 수','d1w':'S&P 500 503종목 전수','d1o':'선별 종목만',
     'd2l':'분석 레이어','d2w':'6개 독립 레이어 통합','d2o':'1–2개 지표',
     'd3l':'신호 선행성','d3w':'옵션·자금흐름 선행 포착','d3o':'가격 후행 분석',
@@ -816,20 +522,16 @@ const T={
     'alpha-title':'상승장에서도, 하락장에서도 —<br><span>S&P 500을 초과합니다</span>',
     'alpha-badge':'양방향 알파 &nbsp;·&nbsp; Bidirectional Alpha',
     'alpha-tagline':'상승장과 하락장, 멈추지 않는 수익률<br>시장 상황과 관련 없는 초과 수익',
-    'reg1':'상승장 &nbsp;·&nbsp; 2020–2021',
-    'reg2':'하락장 &nbsp;·&nbsp; 2022',
-    'reg1-sub':'S&P 500 대비 초과 수익',
-    'reg2-sub':'시장이 무너져도 수익 유지',
+    'reg1':'상승장 &nbsp;·&nbsp; 2020–2021','reg2':'하락장 &nbsp;·&nbsp; 2022',
+    'reg1-sub':'S&P 500 대비 초과 수익','reg2-sub':'시장이 무너져도 수익 유지',
     'alpha-note':'* 상위 20% 포트폴리오 동일가중 &nbsp;·&nbsp; 과적합 검증(Walk-Forward) 완료',
     'dalbar-sub':'30년 평균 / 연',
     'dalbar-hl':'지난 30년간 일반 투자자의<br>연 평균 수익률은 4~5%입니다.',
     'dalbar-desc':'감정적 판단, 잘못된 타이밍, 정보의 부재.<br>Winslow Point는 <strong>데이터 기반 판단</strong>으로<br>그 격차를 좁힙니다.',
     'disc-title':'투자 유의사항',
     'disc-text':'본 플랫폼이 제공하는 모든 정보와 데이터는 참고 목적에 한하며, 특정 종목의 매수·매도를 권유하거나 투자를 대리·일임하는 서비스가 아닙니다. 제공되는 신호 및 점수는 통계적 분석 결과이며, 미래 수익을 보장하지 않습니다. 모든 투자 판단과 그에 따른 손익은 전적으로 이용자 본인에게 귀속됩니다. 투자에는 원금 손실의 위험이 수반될 수 있으므로 신중하게 판단하시기 바랍니다.',
-    'notify-label':'베타 출시 알림 신청',
-    'notify-sub':'4월 20일 오픈 시 가장 먼저 알려드립니다',
-    'notify-btn':'알림 신청',
-    'ndays':'일','nhours':'시간','nmin':'분','nsec':'초',
+    'notify-label':'베타 출시 알림 신청','notify-sub':'4월 20일 오픈 시 가장 먼저 알려드립니다',
+    'notify-btn':'알림 신청','ndays':'일','nhours':'시간','nmin':'분','nsec':'초',
     'days':'Days','hours':'Hours','min':'Min','sec':'Sec',
   },
   en:{
@@ -837,11 +539,9 @@ const T={
     'manifesto':'While others record what already happened,<br>we read the <strong>future</strong> ahead<br>and <strong>prove</strong> the why.',
     'cred-intro':'Not an algorithm — <strong>designed by a real trader.</strong><br>Years of live trading performance back this platform.',
     'cred1-desc':'Achieved Top 5% ranking among global traders<br>on CME Group, the world\'s largest derivatives exchange.',
-    'cred2-org':'Major Korean Brokerage · Live Trading Contest',
-    'cred2-sub':'Top · Overseas Stocks',
+    'cred2-org':'Major Korean Brokerage · Live Trading Contest','cred2-sub':'Top · Overseas Stocks',
     'cred2-desc':'Top 0.1% of all participants in the overseas stocks division<br>of a major Korean brokerage\'s live trading competition.',
-    'cred2-badge':'Verified · Live Contest',
-    'sec-platform':'Multi-Analysis Platform',
+    'cred2-badge':'Verified · Live Contest','sec-platform':'Multi-Analysis Platform',
     'platform-title':'One Platform, <span>Six Perspectives</span>',
     'platform-desc':'Beyond the limits of a single signal — when 6 independent analysis layers validate and converge, a signal becomes conviction.',
     'l1t':'Quant Momentum Signal','l1d':'A statistical model based on price and volume. Generates daily signals for all 503 tickers with backtested PBO validation.',
@@ -852,9 +552,7 @@ const T={
     'l6t':'AI Composite Judgement','l6d':'Fuses signals from 5 layers via ML ensemble. Confidence is downgraded on conflict, upgraded on convergence.',
     'score-title':'Final Convergence of 6 Layers',
     'score-desc':'Generates a 0–100 composite score for each of the 503 S&P 500 tickers. Transparently shows which layer drove the signal and why.',
-    'sample-label':'Sample Score',
-    'sec-diff':'Why Not Others',
-    'diff-other':'Generic Research / HTS',
+    'sample-label':'Sample Score','sec-diff':'Why Not Others','diff-other':'Generic Research / HTS',
     'd1l':'Coverage','d1w':'All 503 S&P 500 Tickers','d1o':'Selected Only',
     'd2l':'Analysis Layers','d2w':'6 Independent Layers','d2o':'1–2 Indicators',
     'd3l':'Signal Lead','d3w':'Options & Flow Ahead of Price','d3o':'Lagging Price Analysis',
@@ -868,20 +566,16 @@ const T={
     'alpha-title':'Bull or Bear, We Outperform —<br><span>In Both Directions</span>',
     'alpha-badge':'Bidirectional Alpha &nbsp;·&nbsp; 양방향 알파',
     'alpha-tagline':'Bull or bear — returns that never stop.<br>Alpha that works regardless of market direction.',
-    'reg1':'Bull Market &nbsp;·&nbsp; 2020–2021',
-    'reg2':'Bear Market &nbsp;·&nbsp; 2022',
-    'reg1-sub':'Outperformance vs. S&P 500',
-    'reg2-sub':'Stayed positive as markets fell',
+    'reg1':'Bull Market &nbsp;·&nbsp; 2020–2021','reg2':'Bear Market &nbsp;·&nbsp; 2022',
+    'reg1-sub':'Outperformance vs. S&P 500','reg2-sub':'Stayed positive as markets fell',
     'alpha-note':'* Top 20% equal-weight portfolio · Walk-Forward overfitting verified',
     'dalbar-sub':'30-Year Avg / Year',
     'dalbar-hl':'The average retail investor earned<br>only 4–5% annually over 30 years.',
     'dalbar-desc':'Emotional decisions, poor timing, lack of information.<br>Winslow Point bridges that gap<br>with <strong>data-driven judgment</strong>.',
     'disc-title':'Investment Disclaimer',
     'disc-text':'All information and data provided by this platform is for reference purposes only and does not constitute a recommendation to buy or sell any specific security, nor a discretionary investment management service. Signals and scores are the result of statistical analysis and do not guarantee future returns. All investment decisions and their resulting gains or losses are solely the responsibility of the user. Investments may involve the risk of loss of principal; please exercise careful judgment.',
-    'notify-label':'Get Beta Access',
-    'notify-sub':'Be the first to know when we launch on April 20',
-    'notify-btn':'Notify Me',
-    'ndays':'Days','nhours':'Hours','nmin':'Min','nsec':'Sec',
+    'notify-label':'Get Beta Access','notify-sub':'Be the first to know when we launch on April 20',
+    'notify-btn':'Notify Me','ndays':'Days','nhours':'Hours','nmin':'Min','nsec':'Sec',
     'days':'Days','hours':'Hours','min':'Min','sec':'Sec',
   }
 };
