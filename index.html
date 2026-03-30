@@ -452,16 +452,14 @@ async function handleNotify(){
   btn.style.pointerEvents = 'none';
 
   try {
-  const form = new FormData();
-  form.append('email', v);
-  await fetch('https://script.google.com/macros/s/AKfycbzbIBCvIdT3xzodw35h4IB-DdE5mnpg5ITVZ6Gr0CpwhsFpoF_ed3CO94dX1nLac7H5/exec', {
+  await fetch('https://formspree.io/f/xgopkoae', {
     method: 'POST',
-    mode: 'no-cors',
-    body: form
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: v })
   });
 } catch(e) {
   console.error(e);
-} 
+}
 
   document.querySelector('.notify-row').style.display='none';
   document.getElementById('notifyOk').style.display='block';
